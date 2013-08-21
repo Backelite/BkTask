@@ -1,0 +1,19 @@
+//
+// Prefix header for all source files of the 'CocoaTouchStaticLibrary' target in the 'CocoaTouchStaticLibrary' project.
+//
+
+#import <CoreFoundation/CoreFoundation.h>
+
+#define BkCoreDeprecatedAttribute
+
+#ifdef __OBJC__
+#   import <Foundation/Foundation.h>
+#   ifdef __IPHONE_OS_VERSION_MIN_REQUIRED
+//iOS only frameworks
+#       import <UIKit/UIKit.h>
+#   else
+//Mac only frameworks
+#       import <AppKit/AppKit.h>
+#       import <Cocoa/Cocoa.h>
+#   endif
+#endif

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>BkTask (Framework).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>BkTask.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>BkTask_UnitTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>8A00D90C14AC785B0054DE5C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8A4E15D914C7118D00A1FC3A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8A9E0D7F141E62F800A28373</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8A9E0D8E141E631000A28373</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,10 @@
+//
+//  BkRelease.xcconfig
+//  BkCore
+//
+//  Created by Pierre Monod-Broca on 01/02/12.
+//  Copyright (c) 2012 Backelite. All rights reserved.
+//
+
+SDKROOT = iphoneos
+GCC_VERSION = com.apple.compilers.llvm.clang.1_0

@@ -1,0 +1,879 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2BA7806517C4B94000D01343 /* BkLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BA7806317C4B93F00D01343 /* BkLog.h */; };
+		2BA7806617C4B94000D01343 /* BkLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BA7806317C4B93F00D01343 /* BkLog.h */; };
+		2BA7806817C4B94000D01343 /* BkLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7806417C4B93F00D01343 /* BkLog.m */; };
+		2BA7806917C4B94000D01343 /* BkLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7806417C4B93F00D01343 /* BkLog.m */; };
+		2BA7807317C4BED900D01343 /* BkTask+BkNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BA7806F17C4BED900D01343 /* BkTask+BkNetwork.h */; };
+		2BA7807417C4BED900D01343 /* BkTask+BkNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BA7806F17C4BED900D01343 /* BkTask+BkNetwork.h */; };
+		2BA7807517C4BED900D01343 /* BkTask+BkNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7807017C4BED900D01343 /* BkTask+BkNetwork.m */; };
+		2BA7807617C4BED900D01343 /* BkTask+BkNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7807017C4BED900D01343 /* BkTask+BkNetwork.m */; };
+		2BA7807717C4BED900D01343 /* BkURLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BA7807117C4BED900D01343 /* BkURLRequestOperation.h */; };
+		2BA7807817C4BED900D01343 /* BkURLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BA7807117C4BED900D01343 /* BkURLRequestOperation.h */; };
+		2BA7807917C4BED900D01343 /* BkURLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7807217C4BED900D01343 /* BkURLRequestOperation.m */; };
+		2BA7807A17C4BED900D01343 /* BkURLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7807217C4BED900D01343 /* BkURLRequestOperation.m */; };
+		2BA7807D17C4BEED00D01343 /* BkFileSavingOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BA7807B17C4BEED00D01343 /* BkFileSavingOperation.h */; };
+		2BA7807E17C4BEED00D01343 /* BkFileSavingOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BA7807B17C4BEED00D01343 /* BkFileSavingOperation.h */; };
+		2BA7807F17C4BEED00D01343 /* BkFileSavingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7807C17C4BEED00D01343 /* BkFileSavingOperation.m */; };
+		2BA7808017C4BEED00D01343 /* BkFileSavingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7807C17C4BEED00D01343 /* BkFileSavingOperation.m */; };
+		2BA7808317C4C05100D01343 /* BkJSONParsingOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BA7808117C4C05000D01343 /* BkJSONParsingOperation.h */; };
+		2BA7808417C4C05100D01343 /* BkJSONParsingOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BA7808117C4C05000D01343 /* BkJSONParsingOperation.h */; };
+		2BA7808517C4C05100D01343 /* BkJSONParsingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7808217C4C05100D01343 /* BkJSONParsingOperation.m */; };
+		2BA7808617C4C05100D01343 /* BkJSONParsingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7808217C4C05100D01343 /* BkJSONParsingOperation.m */; };
+		2BA7808917C4C1EF00D01343 /* UIApplication+BkCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BA7808717C4C1EF00D01343 /* UIApplication+BkCore.h */; };
+		2BA7808A17C4C1EF00D01343 /* UIApplication+BkCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BA7808717C4C1EF00D01343 /* UIApplication+BkCore.h */; };
+		2BA7808B17C4C1EF00D01343 /* UIApplication+BkCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7808817C4C1EF00D01343 /* UIApplication+BkCore.m */; };
+		2BA7808C17C4C1EF00D01343 /* UIApplication+BkCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7808817C4C1EF00D01343 /* UIApplication+BkCore.m */; };
+		2BA7809017C4CD8C00D01343 /* BkFileLoadingOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BA7808E17C4CD8C00D01343 /* BkFileLoadingOperation.h */; };
+		2BA7809117C4CD8C00D01343 /* BkFileLoadingOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BA7808E17C4CD8C00D01343 /* BkFileLoadingOperation.h */; };
+		2BA7809217C4CD8C00D01343 /* BkFileLoadingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7808F17C4CD8C00D01343 /* BkFileLoadingOperation.m */; };
+		2BA7809317C4CD8C00D01343 /* BkFileLoadingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7808F17C4CD8C00D01343 /* BkFileLoadingOperation.m */; };
+		48ED9225158643BC00B32734 /* BkBasicStepOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D73E214D7FFE000522416 /* BkBasicStepOperation.m */; };
+		48ED9226158643BD00B32734 /* BkBasicStepOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D73E214D7FFE000522416 /* BkBasicStepOperation.m */; };
+		753FA89914E3CDB9005A90F6 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3597D4A61150EB5E004E0C86 /* CoreFoundation.framework */; };
+		8A00D90E14AC785B0054DE5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		8A00D91414AC785B0054DE5C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A00D91214AC785B0054DE5C /* InfoPlist.strings */; };
+		8A0D73E314D7FFE000522416 /* BkBasicStepOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A0D73E114D7FFE000522416 /* BkBasicStepOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0D73E414D7FFE000522416 /* BkBasicStepOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A0D73E114D7FFE000522416 /* BkBasicStepOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0D741114D81D1D00522416 /* BkAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A0D741014D81D1D00522416 /* BkAssert.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0D741214D81D1D00522416 /* BkAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A0D741014D81D1D00522416 /* BkAssert.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0FEE361636F2090087F5F2 /* BkMisc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A0FEE341636F0590087F5F2 /* BkMisc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0FEE371636F20A0087F5F2 /* BkMisc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A0FEE341636F0590087F5F2 /* BkMisc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A4C1EB8153842330025B3BF /* BkBlockStepOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A4C1EB6153842330025B3BF /* BkBlockStepOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A4C1EB9153842330025B3BF /* BkBlockStepOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A4C1EB6153842330025B3BF /* BkBlockStepOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A4C1EBA153842330025B3BF /* BkBlockStepOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4C1EB7153842330025B3BF /* BkBlockStepOperation.m */; };
+		8A4C1EBB153842330025B3BF /* BkBlockStepOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4C1EB7153842330025B3BF /* BkBlockStepOperation.m */; };
+		8A58D4F71501218900DC01B3 /* BkTaskContent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A58D4F51501218900DC01B3 /* BkTaskContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A58D4F81501218900DC01B3 /* BkTaskContent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A58D4F51501218900DC01B3 /* BkTaskContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A58D4FA1501218900DC01B3 /* BkTaskContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A58D4F61501218900DC01B3 /* BkTaskContent.m */; };
+		8A58D4FB1501218900DC01B3 /* BkTaskContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A58D4F61501218900DC01B3 /* BkTaskContent.m */; };
+		8A6B7ACE14AE07EC00EFDB30 /* NSObject+BkExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 35A5A26810A19FE600312ABE /* NSObject+BkExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A6B7AE814AE083D00EFDB30 /* NSObject+BkExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A5A26910A19FE600312ABE /* NSObject+BkExtensions.m */; };
+		8A8F01F715F7A1EF001653F7 /* BkTaskObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A8F01F515F7A1EF001653F7 /* BkTaskObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A8F01F915F7A1EF001653F7 /* BkTaskObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F01F615F7A1EF001653F7 /* BkTaskObserver.m */; };
+		8A8F01FB15F7A763001653F7 /* BkTaskObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F01F615F7A1EF001653F7 /* BkTaskObserver.m */; };
+		8A8F020515F7AB5D001653F7 /* BkTaskObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A8F01F515F7A1EF001653F7 /* BkTaskObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A9D8CC31422566900AEB358 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9D8CC21422566900AEB358 /* CoreGraphics.framework */; };
+		8A9D8CC51422567400AEB358 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9D8CC41422567400AEB358 /* SystemConfiguration.framework */; };
+		8A9D8CC61422569900AEB358 /* NSObject+BkExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A5A26910A19FE600312ABE /* NSObject+BkExtensions.m */; };
+		8A9E0D9F141E631000A28373 /* NSObject+BkExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 35A5A26810A19FE600312ABE /* NSObject+BkExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A9E0DBC141E631000A28373 /* NSObject+BkExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A5A26910A19FE600312ABE /* NSObject+BkExtensions.m */; };
+		8ACF297C141F62D000D57D9A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3597D4A61150EB5E004E0C86 /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8ACF297D141F62D000D57D9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8ACF297E141F62D000D57D9A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C5781910879E7800B95A6E /* MobileCoreServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8ACF2982141F780100D57D9A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ACF2980141F77EB00D57D9A /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8AFC1C8414D702A4003C1B10 /* BkTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AFC1C8214D702A4003C1B10 /* BkTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8AFC1C8514D702A4003C1B10 /* BkTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AFC1C8214D702A4003C1B10 /* BkTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8AFC1C8714D702A4003C1B10 /* BkTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFC1C8314D702A4003C1B10 /* BkTask.m */; };
+		8AFC1C8814D702A4003C1B10 /* BkTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFC1C8314D702A4003C1B10 /* BkTask.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2BA7806317C4B93F00D01343 /* BkLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BkLog.h; sourceTree = "<group>"; };
+		2BA7806417C4B93F00D01343 /* BkLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BkLog.m; sourceTree = "<group>"; };
+		2BA7806F17C4BED900D01343 /* BkTask+BkNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BkTask+BkNetwork.h"; sourceTree = "<group>"; };
+		2BA7807017C4BED900D01343 /* BkTask+BkNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BkTask+BkNetwork.m"; sourceTree = "<group>"; };
+		2BA7807117C4BED900D01343 /* BkURLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BkURLRequestOperation.h; sourceTree = "<group>"; };
+		2BA7807217C4BED900D01343 /* BkURLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BkURLRequestOperation.m; sourceTree = "<group>"; };
+		2BA7807B17C4BEED00D01343 /* BkFileSavingOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BkFileSavingOperation.h; sourceTree = "<group>"; };
+		2BA7807C17C4BEED00D01343 /* BkFileSavingOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BkFileSavingOperation.m; sourceTree = "<group>"; };
+		2BA7808117C4C05000D01343 /* BkJSONParsingOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BkJSONParsingOperation.h; sourceTree = "<group>"; };
+		2BA7808217C4C05100D01343 /* BkJSONParsingOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BkJSONParsingOperation.m; sourceTree = "<group>"; };
+		2BA7808717C4C1EF00D01343 /* UIApplication+BkCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+BkCore.h"; sourceTree = "<group>"; };
+		2BA7808817C4C1EF00D01343 /* UIApplication+BkCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+BkCore.m"; sourceTree = "<group>"; };
+		2BA7808E17C4CD8C00D01343 /* BkFileLoadingOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BkFileLoadingOperation.h; sourceTree = "<group>"; };
+		2BA7808F17C4CD8C00D01343 /* BkFileLoadingOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BkFileLoadingOperation.m; sourceTree = "<group>"; };
+		3597D4A61150EB5E004E0C86 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		35A5A26810A19FE600312ABE /* NSObject+BkExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BkExtensions.h"; sourceTree = "<group>"; };
+		35A5A26910A19FE600312ABE /* NSObject+BkExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BkExtensions.m"; sourceTree = "<group>"; };
+		35C5781910879E7800B95A6E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		8A00D90D14AC785B0054DE5C /* BkTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework.static; includeInIndex = 0; path = BkTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A00D91114AC785B0054DE5C /* BkTaskFramework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BkTaskFramework-Info.plist"; sourceTree = "<group>"; };
+		8A00D91314AC785B0054DE5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8A00D91514AC785B0054DE5C /* BkCoreFramework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BkCoreFramework-Prefix.pch"; sourceTree = "<group>"; };
+		8A0D73E114D7FFE000522416 /* BkBasicStepOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BkBasicStepOperation.h; sourceTree = "<group>"; };
+		8A0D73E214D7FFE000522416 /* BkBasicStepOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BkBasicStepOperation.m; sourceTree = "<group>"; };
+		8A0D741014D81D1D00522416 /* BkAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BkAssert.h; sourceTree = "<group>"; };
+		8A0D742914D851DD00522416 /* Readme.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.mdown; sourceTree = "<group>"; };
+		8A0FEE341636F0590087F5F2 /* BkMisc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BkMisc.h; sourceTree = "<group>"; };
+		8A4C1EB6153842330025B3BF /* BkBlockStepOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BkBlockStepOperation.h; sourceTree = "<group>"; };
+		8A4C1EB7153842330025B3BF /* BkBlockStepOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BkBlockStepOperation.m; sourceTree = "<group>"; };
+		8A58D4F51501218900DC01B3 /* BkTaskContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BkTaskContent.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8A58D4F61501218900DC01B3 /* BkTaskContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BkTaskContent.m; sourceTree = "<group>"; };
+		8A8F01F515F7A1EF001653F7 /* BkTaskObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BkTaskObserver.h; sourceTree = "<group>"; };
+		8A8F01F615F7A1EF001653F7 /* BkTaskObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BkTaskObserver.m; sourceTree = "<group>"; };
+		8A92024F14B365EB00B72461 /* framework-ios-pre-build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "framework-ios-pre-build.sh"; sourceTree = "<group>"; };
+		8A92025014B366A500B72461 /* framework-ios-post-build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "framework-ios-post-build.sh"; sourceTree = "<group>"; };
+		8A9D8CBC1422559A00AEB358 /* BkTask_UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BkTask_UnitTests-Info.plist"; sourceTree = "<group>"; };
+		8A9D8CC21422566900AEB358 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8A9D8CC41422567400AEB358 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8A9E0D8D141E62F800A28373 /* BkTask_UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BkTask_UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A9E0DDB141E631000A28373 /* libBkTask.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBkTask.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ACF2973141F568F00D57D9A /* BkCore-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BkCore-Prefix.pch"; sourceTree = "<group>"; };
+		8ACF2980141F77EB00D57D9A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8AEA655014D97B3A00ED2D23 /* BkRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BkRelease.xcconfig; sourceTree = "<group>"; };
+		8AEA655214D9800100ED2D23 /* BkDebug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = BkDebug.xcconfig; sourceTree = "<group>"; };
+		8AFC1C8214D702A4003C1B10 /* BkTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BkTask.h; sourceTree = "<group>"; };
+		8AFC1C8314D702A4003C1B10 /* BkTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BkTask.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8A00D90814AC785B0054DE5C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				753FA89914E3CDB9005A90F6 /* CoreFoundation.framework in Frameworks */,
+				8A00D90E14AC785B0054DE5C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A9E0D87141E62F800A28373 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A9D8CC51422567400AEB358 /* SystemConfiguration.framework in Frameworks */,
+				8A9D8CC31422566900AEB358 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A9E0DD0141E631000A28373 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8ACF297C141F62D000D57D9A /* CoreFoundation.framework in Frameworks */,
+				8ACF297D141F62D000D57D9A /* Foundation.framework in Frameworks */,
+				8ACF297E141F62D000D57D9A /* MobileCoreServices.framework in Frameworks */,
+				8ACF2982141F780100D57D9A /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8A9E0D8D141E62F800A28373 /* BkTask_UnitTests.octest */,
+				8A9E0DDB141E631000A28373 /* libBkTask.a */,
+				8A00D90D14AC785B0054DE5C /* BkTask.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* BkCommon */ = {
+			isa = PBXGroup;
+			children = (
+				8A0D742914D851DD00522416 /* Readme.mdown */,
+				08FB77AEFE84172EC02AAC07 /* Classes */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				8A9D8CBB1422559A00AEB358 /* Resources */,
+				27D08DCE1251E6AA0035A77A /* TestClasses */,
+				8A92024E14B365C100B72461 /* scripts */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				034768DFFF38A50411DB9C8B /* Products */,
+			);
+			name = BkCommon;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A9D8CC41422567400AEB358 /* SystemConfiguration.framework */,
+				8A9D8CC21422566900AEB358 /* CoreGraphics.framework */,
+				3597D4A61150EB5E004E0C86 /* CoreFoundation.framework */,
+				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+				35C5781910879E7800B95A6E /* MobileCoreServices.framework */,
+				8ACF2980141F77EB00D57D9A /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				357E2F1B1020A78000A99D42 /* Categories */,
+				8A4322081423B0D800BA7F46 /* Task */,
+				2BA7806C17C4BE6000D01343 /* Steps */,
+				2BA7806B17C4BC0F00D01343 /* Utilities */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		27D08DCE1251E6AA0035A77A /* TestClasses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TestClasses;
+			sourceTree = "<group>";
+		};
+		2BA7806B17C4BC0F00D01343 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8A0D741014D81D1D00522416 /* BkAssert.h */,
+				8A0FEE341636F0590087F5F2 /* BkMisc.h */,
+				2BA7806317C4B93F00D01343 /* BkLog.h */,
+				2BA7806417C4B93F00D01343 /* BkLog.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		2BA7806C17C4BE6000D01343 /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				2BA7808D17C4C78000D01343 /* Basic */,
+				2BA7806D17C4BE8400D01343 /* File IO */,
+				2BA7806E17C4BE8E00D01343 /* Network */,
+			);
+			name = Steps;
+			sourceTree = "<group>";
+		};
+		2BA7806D17C4BE8400D01343 /* File IO */ = {
+			isa = PBXGroup;
+			children = (
+				2BA7807B17C4BEED00D01343 /* BkFileSavingOperation.h */,
+				2BA7807C17C4BEED00D01343 /* BkFileSavingOperation.m */,
+				2BA7808E17C4CD8C00D01343 /* BkFileLoadingOperation.h */,
+				2BA7808F17C4CD8C00D01343 /* BkFileLoadingOperation.m */,
+			);
+			name = "File IO";
+			sourceTree = "<group>";
+		};
+		2BA7806E17C4BE8E00D01343 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2BA7806F17C4BED900D01343 /* BkTask+BkNetwork.h */,
+				2BA7807017C4BED900D01343 /* BkTask+BkNetwork.m */,
+				2BA7807117C4BED900D01343 /* BkURLRequestOperation.h */,
+				2BA7807217C4BED900D01343 /* BkURLRequestOperation.m */,
+				2BA7808117C4C05000D01343 /* BkJSONParsingOperation.h */,
+				2BA7808217C4C05100D01343 /* BkJSONParsingOperation.m */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		2BA7808D17C4C78000D01343 /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				8A0D73E114D7FFE000522416 /* BkBasicStepOperation.h */,
+				8A0D73E214D7FFE000522416 /* BkBasicStepOperation.m */,
+				8A4C1EB6153842330025B3BF /* BkBlockStepOperation.h */,
+				8A4C1EB7153842330025B3BF /* BkBlockStepOperation.m */,
+			);
+			name = Basic;
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				8ACF2973141F568F00D57D9A /* BkCore-Prefix.pch */,
+				8A00D91514AC785B0054DE5C /* BkCoreFramework-Prefix.pch */,
+			);
+			name = "Other Sources";
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		357E2F1B1020A78000A99D42 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				2BA7808717C4C1EF00D01343 /* UIApplication+BkCore.h */,
+				2BA7808817C4C1EF00D01343 /* UIApplication+BkCore.m */,
+				35A5A26810A19FE600312ABE /* NSObject+BkExtensions.h */,
+				35A5A26910A19FE600312ABE /* NSObject+BkExtensions.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		8A3829EB14C82CB60075C94D /* BkTask Framework Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8A00D91114AC785B0054DE5C /* BkTaskFramework-Info.plist */,
+				8A00D91214AC785B0054DE5C /* InfoPlist.strings */,
+			);
+			name = "BkTask Framework Supporting Files";
+			path = BkCoreFramework;
+			sourceTree = "<group>";
+		};
+		8A4322081423B0D800BA7F46 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				8AFC1C8214D702A4003C1B10 /* BkTask.h */,
+				8AFC1C8314D702A4003C1B10 /* BkTask.m */,
+				8A8F01F515F7A1EF001653F7 /* BkTaskObserver.h */,
+				8A8F01F615F7A1EF001653F7 /* BkTaskObserver.m */,
+				8A58D4F51501218900DC01B3 /* BkTaskContent.h */,
+				8A58D4F61501218900DC01B3 /* BkTaskContent.m */,
+			);
+			name = Task;
+			sourceTree = "<group>";
+		};
+		8A92024E14B365C100B72461 /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				8A92024F14B365EB00B72461 /* framework-ios-pre-build.sh */,
+				8A92025014B366A500B72461 /* framework-ios-post-build.sh */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
+		8A9D8CBB1422559A00AEB358 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8AEA655014D97B3A00ED2D23 /* BkRelease.xcconfig */,
+				8AEA655214D9800100ED2D23 /* BkDebug.xcconfig */,
+				8A3829EB14C82CB60075C94D /* BkTask Framework Supporting Files */,
+				8A9D8CBC1422559A00AEB358 /* BkTask_UnitTests-Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8A00D90914AC785B0054DE5C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A6B7ACE14AE07EC00EFDB30 /* NSObject+BkExtensions.h in Headers */,
+				8AFC1C8514D702A4003C1B10 /* BkTask.h in Headers */,
+				8A0D73E414D7FFE000522416 /* BkBasicStepOperation.h in Headers */,
+				8A0D741214D81D1D00522416 /* BkAssert.h in Headers */,
+				8A58D4F81501218900DC01B3 /* BkTaskContent.h in Headers */,
+				8A4C1EB9153842330025B3BF /* BkBlockStepOperation.h in Headers */,
+				8A8F020515F7AB5D001653F7 /* BkTaskObserver.h in Headers */,
+				8A0FEE371636F20A0087F5F2 /* BkMisc.h in Headers */,
+				2BA7806617C4B94000D01343 /* BkLog.h in Headers */,
+				2BA7807417C4BED900D01343 /* BkTask+BkNetwork.h in Headers */,
+				2BA7807817C4BED900D01343 /* BkURLRequestOperation.h in Headers */,
+				2BA7807E17C4BEED00D01343 /* BkFileSavingOperation.h in Headers */,
+				2BA7808417C4C05100D01343 /* BkJSONParsingOperation.h in Headers */,
+				2BA7808A17C4C1EF00D01343 /* UIApplication+BkCore.h in Headers */,
+				2BA7809117C4CD8C00D01343 /* BkFileLoadingOperation.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A9E0D91141E631000A28373 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A9E0D9F141E631000A28373 /* NSObject+BkExtensions.h in Headers */,
+				8AFC1C8414D702A4003C1B10 /* BkTask.h in Headers */,
+				8A0D73E314D7FFE000522416 /* BkBasicStepOperation.h in Headers */,
+				8A0D741114D81D1D00522416 /* BkAssert.h in Headers */,
+				8A58D4F71501218900DC01B3 /* BkTaskContent.h in Headers */,
+				8A4C1EB8153842330025B3BF /* BkBlockStepOperation.h in Headers */,
+				8A8F01F715F7A1EF001653F7 /* BkTaskObserver.h in Headers */,
+				8A0FEE361636F2090087F5F2 /* BkMisc.h in Headers */,
+				2BA7806517C4B94000D01343 /* BkLog.h in Headers */,
+				2BA7807317C4BED900D01343 /* BkTask+BkNetwork.h in Headers */,
+				2BA7807717C4BED900D01343 /* BkURLRequestOperation.h in Headers */,
+				2BA7807D17C4BEED00D01343 /* BkFileSavingOperation.h in Headers */,
+				2BA7808317C4C05100D01343 /* BkJSONParsingOperation.h in Headers */,
+				2BA7808917C4C1EF00D01343 /* UIApplication+BkCore.h in Headers */,
+				2BA7809017C4CD8C00D01343 /* BkFileLoadingOperation.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8A00D90C14AC785B0054DE5C /* BkTask (Framework) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A00D91914AC785C0054DE5C /* Build configuration list for PBXNativeTarget "BkTask (Framework)" */;
+			buildPhases = (
+				8A00D90914AC785B0054DE5C /* Headers */,
+				8A00D90614AC785B0054DE5C /* ShellScript */,
+				8A00D90714AC785B0054DE5C /* Sources */,
+				8A00D90814AC785B0054DE5C /* Frameworks */,
+				8A00D90A14AC785B0054DE5C /* Resources */,
+				8A00D90B14AC785B0054DE5C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BkTask (Framework)";
+			productName = BkCoreFW;
+			productReference = 8A00D90D14AC785B0054DE5C /* BkTask.framework */;
+			productType = "com.apple.product-type.framework.static";
+		};
+		8A9E0D7F141E62F800A28373 /* BkTask_UnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A9E0D89141E62F800A28373 /* Build configuration list for PBXNativeTarget "BkTask_UnitTests" */;
+			buildPhases = (
+				8A9E0D80141E62F800A28373 /* Resources */,
+				8A9E0D81141E62F800A28373 /* Sources */,
+				8A9E0D87141E62F800A28373 /* Frameworks */,
+				8A9E0D88141E62F800A28373 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BkTask_UnitTests;
+			productName = BkCommon_UnitTests;
+			productReference = 8A9E0D8D141E62F800A28373 /* BkTask_UnitTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		8A9E0D8E141E631000A28373 /* BkTask */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A9E0DD7141E631000A28373 /* Build configuration list for PBXNativeTarget "BkTask" */;
+			buildPhases = (
+				8A9E0D91141E631000A28373 /* Headers */,
+				8A9E0DB2141E631000A28373 /* Sources */,
+				8A9E0DD0141E631000A28373 /* Frameworks */,
+				8A98D8FD1455C75B0087B504 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BkTask;
+			productName = BkCommon;
+			productReference = 8A9E0DDB141E631000A28373 /* libBkTask.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Bk;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = Backelite;
+			};
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "BkTask" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0867D691FE84028FC02AAC07 /* BkCommon */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8A9E0D8E141E631000A28373 /* BkTask */,
+				8A9E0D7F141E62F800A28373 /* BkTask_UnitTests */,
+				8A00D90C14AC785B0054DE5C /* BkTask (Framework) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8A00D90A14AC785B0054DE5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A00D91414AC785B0054DE5C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A9E0D80141E62F800A28373 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8A00D90614AC785B0054DE5C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "CUSTOM_SCRIPT=\"${SOURCE_ROOT}/scripts/framework-ios-pre-build.sh\"\nif [ -x \"$CUSTOM_SCRIPT\" ]; then\n    \"$CUSTOM_SCRIPT\"\nelse\n    echo \"Warning: custom script '$CUSTOM_SCRIPT' is not present or not executable\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8A00D90B14AC785B0054DE5C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "CUSTOM_SCRIPT=\"${SOURCE_ROOT}/scripts/framework-ios-post-build.sh\"\nif [ -x \"$CUSTOM_SCRIPT\" ]; then\n    \"$CUSTOM_SCRIPT\"\nelse\n    echo \"Warning: custom script '$CUSTOM_SCRIPT' is not present or not executable\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8A98D8FD1455C75B0087B504 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${TARGET_BUILD_DIR}\" != \"${BUILT_PRODUCTS_DIR}\" ]; then\n  ln -s \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}\" \"${BUILT_PRODUCTS_DIR}\" || echo \"warning: header symbolic link failed\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8A9E0D88141E62F800A28373 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8A00D90714AC785B0054DE5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A6B7AE814AE083D00EFDB30 /* NSObject+BkExtensions.m in Sources */,
+				8AFC1C8814D702A4003C1B10 /* BkTask.m in Sources */,
+				8A58D4FB1501218900DC01B3 /* BkTaskContent.m in Sources */,
+				8A4C1EBB153842330025B3BF /* BkBlockStepOperation.m in Sources */,
+				48ED9225158643BC00B32734 /* BkBasicStepOperation.m in Sources */,
+				8A8F01FB15F7A763001653F7 /* BkTaskObserver.m in Sources */,
+				2BA7806917C4B94000D01343 /* BkLog.m in Sources */,
+				2BA7807617C4BED900D01343 /* BkTask+BkNetwork.m in Sources */,
+				2BA7807A17C4BED900D01343 /* BkURLRequestOperation.m in Sources */,
+				2BA7808017C4BEED00D01343 /* BkFileSavingOperation.m in Sources */,
+				2BA7808617C4C05100D01343 /* BkJSONParsingOperation.m in Sources */,
+				2BA7808C17C4C1EF00D01343 /* UIApplication+BkCore.m in Sources */,
+				2BA7809317C4CD8C00D01343 /* BkFileLoadingOperation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A9E0D81141E62F800A28373 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A9D8CC61422569900AEB358 /* NSObject+BkExtensions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A9E0DB2141E631000A28373 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A9E0DBC141E631000A28373 /* NSObject+BkExtensions.m in Sources */,
+				8AFC1C8714D702A4003C1B10 /* BkTask.m in Sources */,
+				8A58D4FA1501218900DC01B3 /* BkTaskContent.m in Sources */,
+				8A4C1EBA153842330025B3BF /* BkBlockStepOperation.m in Sources */,
+				48ED9226158643BD00B32734 /* BkBasicStepOperation.m in Sources */,
+				8A8F01F915F7A1EF001653F7 /* BkTaskObserver.m in Sources */,
+				2BA7806817C4B94000D01343 /* BkLog.m in Sources */,
+				2BA7807517C4BED900D01343 /* BkTask+BkNetwork.m in Sources */,
+				2BA7807917C4BED900D01343 /* BkURLRequestOperation.m in Sources */,
+				2BA7807F17C4BEED00D01343 /* BkFileSavingOperation.m in Sources */,
+				2BA7808517C4C05100D01343 /* BkJSONParsingOperation.m in Sources */,
+				2BA7808B17C4C1EF00D01343 /* UIApplication+BkCore.m in Sources */,
+				2BA7809217C4CD8C00D01343 /* BkFileLoadingOperation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8A00D91214AC785B0054DE5C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A00D91314AC785B0054DE5C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB922308733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8AEA655214D9800100ED2D23 /* BkDebug.xcconfig */;
+			buildSettings = {
+				ARCHS = (
+					armv6,
+					armv7,
+					armv7s,
+				);
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "Resources/BkCore-Prefix.pch";
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = DEBUG;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-DDEBUG";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR) $(TARGET_BUILD_DIR)";
+			};
+			name = Debug;
+		};
+		1DEB922408733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8AEA655014D97B3A00ED2D23 /* BkRelease.xcconfig */;
+			buildSettings = {
+				ARCHS = (
+					armv6,
+					armv7,
+					armv7s,
+				);
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREFIX_HEADER = "Resources/BkCore-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR) $(TARGET_BUILD_DIR)";
+			};
+			name = Release;
+		};
+		8A00D91614AC785B0054DE5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				INFOPLIST_FILE = "Resources/BkCoreFramework/BkTaskFramework-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = BkTask;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		8A00D91814AC785B0054DE5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_THUMB_SUPPORT = NO;
+				INFOPLIST_FILE = "Resources/BkCoreFramework/BkTaskFramework-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = BkTask;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		8A9E0D8A141E62F800A28373 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_THUMB_SUPPORT = NO;
+				INFOPLIST_FILE = "Resources/BkTask_UnitTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = BkTask_UnitTests;
+				TEST_AFTER_BUILD = YES;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		8A9E0D8C141E62F800A28373 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_THUMB_SUPPORT = NO;
+				INFOPLIST_FILE = "Resources/BkTask_UnitTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = BkTask_UnitTests;
+				TEST_AFTER_BUILD = YES;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		8A9E0DD8141E631000A28373 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/BkCore.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = "";
+				INSTALL_PATH = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/ThirdParty/AdBoxByBackelite/adBox/AdBoxLibrary\"",
+				);
+				PRIVATE_HEADERS_FOLDER_PATH = "$(PRODUCT_NAME)";
+				PRODUCT_NAME = BkTask;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PRODUCT_NAME)";
+			};
+			name = Debug;
+		};
+		8A9E0DDA141E631000A28373 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/BkCore.dst;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = "";
+				INSTALL_PATH = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/ThirdParty/AdBoxByBackelite/adBox/AdBoxLibrary\"",
+				);
+				PRIVATE_HEADERS_FOLDER_PATH = "$(PRODUCT_NAME)";
+				PRODUCT_NAME = BkTask;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PRODUCT_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "BkTask" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB922308733DC00010E9CD /* Debug */,
+				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A00D91914AC785C0054DE5C /* Build configuration list for PBXNativeTarget "BkTask (Framework)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A00D91614AC785B0054DE5C /* Debug */,
+				8A00D91814AC785B0054DE5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A9E0D89141E62F800A28373 /* Build configuration list for PBXNativeTarget "BkTask_UnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A9E0D8A141E62F800A28373 /* Debug */,
+				8A9E0D8C141E62F800A28373 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A9E0DD7141E631000A28373 /* Build configuration list for PBXNativeTarget "BkTask" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A9E0DD8141E631000A28373 /* Debug */,
+				8A9E0DDA141E631000A28373 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}
