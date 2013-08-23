@@ -29,26 +29,63 @@ typedef void (^BkTaskFailure)(BkTask *task, NSError *error);
 @property (strong, nonatomic, readonly) BkTaskContent *content;
 @property (strong, nonatomic) id taskId; //< application defined value that can be used to identify a task
 
-@property (readonly) BOOL isExecuting; //< is set to YES when the task starts, then to NO when it stops, whether it is cancelled, done, or has failed. KVO compliant. Thread safe.
-@property (readonly) BOOL isFinished; //< is set to NO when the task stops, whether it is cancelled, done, or has failed. KVO compliant. Thread safe.
-@property (readonly) BOOL isCancelled; //< is set to YES when the method -cancel is called. KVO compliant. Thread safe.
+/**
+ *  Is set to YES when the task starts, then to NO when it stops, whether it is cancelled, done, or has failed. KVO compliant. Thread safe.
+ */
+@property (readonly) BOOL isExecuting;
 
-/// the designated initializer.
+/**
+ *  Is set to NO when the task stops, whether it is cancelled, done, or has failed. KVO compliant. Thread safe.
+ */
+@property (readonly) BOOL isFinished;
+
+/**
+ *  Is set to YES when the method -cancel is called. KVO compliant. Thread safe.
+ */
+@property (readonly) BOOL isCancelled;
+
+/**
+ *  Designated initializer.
+ *
+ *  @return An initialized task.
+ */
 - (id) init;
 ///Helper
 //- (id) initWithRequest:(NSURLRequest *)request steps:(NSArray *)stepsOrConfigs;
 
-/** adds a step after the last one. */
+/**
+ *  Adds a new step to receiver after the last one.
+ *
+ *  @param aStep The step to add.
+ */
 - (void) addStep:(BkStepOperation *)aStep;
-/** adds a step after another one. Call with previousStep set to nil to add it as the first step. */
+
+/**
+ *  Adds a new step to receiver after another one.
+ *
+ *  @param aStep        The step to add.
+ *  @param previousStep Reference to the step after which the new step will be added.
+ *  @discussion Call with previousStep set to nil to add it as the first step.
+ */
 - (void) insertStep:(BkStepOperation *)aStep afterStep:(BkStepOperation *)previousStep;
-/** adds a step before another one. Raises an exception if nextStep is already running. */
+
+/**
+ *  Adds a step before another one. Raises an exception if nextStep is already running.
+ *
+ *  @param aStep    The step to add.
+ *  @param nextStep Reference to the step before which the new step will be added.
+ */
 - (void) insertStep:(BkStepOperation *)aStep beforeStep:(BkStepOperation *)nextStep;
 
-/// adds a block to be called on completion.
 ///
-/// 'target' is intended to be used to remove the related completion block when necessary.
-/// 'target' is unretained but beware that the same object could be retained by the completion block.
+///
+///
+/**
+ *  Adds a block to be called on completion.
+ *
+ *  @param target An object intended to be used to remove the related completion block when necessary. It is unretained but beware that the same object could be retained by the completion block.
+ *  @param completionBlock A block called when the task is finished.
+ */
 - (void) addTarget:(id)target completion:(BkTaskCompletion)completionBlock;
 /// removes the completion handlers registered for target.
 /// if 'target' is the last target, it may cancel the task

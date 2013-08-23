@@ -101,7 +101,6 @@
 		8A0D73E114D7FFE000522416 /* BkBasicStepOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BkBasicStepOperation.h; sourceTree = "<group>"; };
 		8A0D73E214D7FFE000522416 /* BkBasicStepOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BkBasicStepOperation.m; sourceTree = "<group>"; };
 		8A0D741014D81D1D00522416 /* BkAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BkAssert.h; sourceTree = "<group>"; };
-		8A0D742914D851DD00522416 /* Readme.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.mdown; sourceTree = "<group>"; };
 		8A0FEE341636F0590087F5F2 /* BkMisc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BkMisc.h; sourceTree = "<group>"; };
 		8A4C1EB6153842330025B3BF /* BkBlockStepOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BkBlockStepOperation.h; sourceTree = "<group>"; };
 		8A4C1EB7153842330025B3BF /* BkBlockStepOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BkBlockStepOperation.m; sourceTree = "<group>"; };
@@ -171,7 +170,6 @@
 		0867D691FE84028FC02AAC07 /* BkCommon */ = {
 			isa = PBXGroup;
 			children = (
-				8A0D742914D851DD00522416 /* Readme.mdown */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				8A9D8CBB1422559A00AEB358 /* Resources */,
