@@ -17,7 +17,6 @@ NSString * const BkTaskContentBodyObject = @"bodyObject";
 }
 @dynamic bodyData;
 @dynamic bodyObject;
-@dynamic errors;
 
 #pragma mark - Destruction
 
@@ -133,33 +132,6 @@ static void dynamicSetter(id self, SEL _cmd, id value)
 - (void)setBodyObject:(id)bodyObject
 {
     [self setContentValue:bodyObject forKey:@"bodyObject"];
-}
-
-- (NSArray *)errors
-{
-    return [self contentValueForKey:@"errors"];
-}
-
-- (void)setErrors:(NSArray *)errors
-{
-    NSParameterAssert(errors == nil || [errors isKindOfClass:[NSArray class]]);
-    [self setContentValue:errors forKey:@"errors"];
-}
-
-- (NSError *) lastError
-{
-    return [[self errors] lastObject];
-}
-
-- (void) pushError:(NSError *)anError
-{
-    NSArray *errors = self.errors;
-    if (nil == errors) {
-        errors = [NSArray arrayWithObject:anError];
-    } else {
-        errors = [errors arrayByAddingObject:anError];
-    }
-    self.errors = errors;
 }
 
 @end

@@ -16,13 +16,26 @@
 @interface BkBasicStepOperation : NSOperation <BkTaskStep>
 
 /**
- * abstract method meant to be overridden by the most basic subclasses to perform its task
+ * Abstract method meant to be overridden by the most basic subclasses to perform its task
+ * @discussion Returning nil will cause the task to fail. If your step have no output, simply return [NSNull null].
  */
 - (id) processInput:(id)theInput error:(NSError **)error;
 
-/// abstract method. See BkTaskContent for possible values.
+
+/**
+ *  Abstract method. See BkTaskContent for possible values.
+ *
+ *  @return The input key.
+ *  @see \ref BkTaskContent.
+ */
 - (NSString *) inputKey;
-/// abstract method. See BkTaskContent for possible values.
+
+/**
+ *  Abstract method. See BkTaskContent for possible values.
+ *
+ *  @return The output key.
+ *  @see \ref BkTaskContent.
+ */
 - (NSString *) outputKey;
 
 @end

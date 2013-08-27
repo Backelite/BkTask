@@ -54,17 +54,12 @@
 		8A58D4F81501218900DC01B3 /* BkTaskContent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A58D4F51501218900DC01B3 /* BkTaskContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A58D4FA1501218900DC01B3 /* BkTaskContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A58D4F61501218900DC01B3 /* BkTaskContent.m */; };
 		8A58D4FB1501218900DC01B3 /* BkTaskContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A58D4F61501218900DC01B3 /* BkTaskContent.m */; };
-		8A6B7ACE14AE07EC00EFDB30 /* NSObject+BkExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 35A5A26810A19FE600312ABE /* NSObject+BkExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8A6B7AE814AE083D00EFDB30 /* NSObject+BkExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A5A26910A19FE600312ABE /* NSObject+BkExtensions.m */; };
 		8A8F01F715F7A1EF001653F7 /* BkTaskObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A8F01F515F7A1EF001653F7 /* BkTaskObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A8F01F915F7A1EF001653F7 /* BkTaskObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F01F615F7A1EF001653F7 /* BkTaskObserver.m */; };
 		8A8F01FB15F7A763001653F7 /* BkTaskObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F01F615F7A1EF001653F7 /* BkTaskObserver.m */; };
 		8A8F020515F7AB5D001653F7 /* BkTaskObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A8F01F515F7A1EF001653F7 /* BkTaskObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A9D8CC31422566900AEB358 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9D8CC21422566900AEB358 /* CoreGraphics.framework */; };
 		8A9D8CC51422567400AEB358 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9D8CC41422567400AEB358 /* SystemConfiguration.framework */; };
-		8A9D8CC61422569900AEB358 /* NSObject+BkExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A5A26910A19FE600312ABE /* NSObject+BkExtensions.m */; };
-		8A9E0D9F141E631000A28373 /* NSObject+BkExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 35A5A26810A19FE600312ABE /* NSObject+BkExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8A9E0DBC141E631000A28373 /* NSObject+BkExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A5A26910A19FE600312ABE /* NSObject+BkExtensions.m */; };
 		8ACF297C141F62D000D57D9A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3597D4A61150EB5E004E0C86 /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8ACF297D141F62D000D57D9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8ACF297E141F62D000D57D9A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C5781910879E7800B95A6E /* MobileCoreServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -91,8 +86,6 @@
 		2BA7808E17C4CD8C00D01343 /* BkFileLoadingOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BkFileLoadingOperation.h; sourceTree = "<group>"; };
 		2BA7808F17C4CD8C00D01343 /* BkFileLoadingOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BkFileLoadingOperation.m; sourceTree = "<group>"; };
 		3597D4A61150EB5E004E0C86 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		35A5A26810A19FE600312ABE /* NSObject+BkExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BkExtensions.h"; sourceTree = "<group>"; };
-		35A5A26910A19FE600312ABE /* NSObject+BkExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BkExtensions.m"; sourceTree = "<group>"; };
 		35C5781910879E7800B95A6E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		8A00D90D14AC785B0054DE5C /* BkTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework.static; includeInIndex = 0; path = BkTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A00D91114AC785B0054DE5C /* BkTaskFramework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BkTaskFramework-Info.plist"; sourceTree = "<group>"; };
@@ -283,8 +276,6 @@
 			children = (
 				2BA7808717C4C1EF00D01343 /* UIApplication+BkCore.h */,
 				2BA7808817C4C1EF00D01343 /* UIApplication+BkCore.m */,
-				35A5A26810A19FE600312ABE /* NSObject+BkExtensions.h */,
-				35A5A26910A19FE600312ABE /* NSObject+BkExtensions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -339,7 +330,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A6B7ACE14AE07EC00EFDB30 /* NSObject+BkExtensions.h in Headers */,
 				8AFC1C8514D702A4003C1B10 /* BkTask.h in Headers */,
 				8A0D73E414D7FFE000522416 /* BkBasicStepOperation.h in Headers */,
 				8A0D741214D81D1D00522416 /* BkAssert.h in Headers */,
@@ -361,7 +351,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A9E0D9F141E631000A28373 /* NSObject+BkExtensions.h in Headers */,
 				8AFC1C8414D702A4003C1B10 /* BkTask.h in Headers */,
 				8A0D73E314D7FFE000522416 /* BkBasicStepOperation.h in Headers */,
 				8A0D741114D81D1D00522416 /* BkAssert.h in Headers */,
@@ -548,7 +537,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A6B7AE814AE083D00EFDB30 /* NSObject+BkExtensions.m in Sources */,
 				8AFC1C8814D702A4003C1B10 /* BkTask.m in Sources */,
 				8A58D4FB1501218900DC01B3 /* BkTaskContent.m in Sources */,
 				8A4C1EBB153842330025B3BF /* BkBlockStepOperation.m in Sources */,
@@ -568,7 +556,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A9D8CC61422569900AEB358 /* NSObject+BkExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,7 +563,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A9E0DBC141E631000A28373 /* NSObject+BkExtensions.m in Sources */,
 				8AFC1C8714D702A4003C1B10 /* BkTask.m in Sources */,
 				8A58D4FA1501218900DC01B3 /* BkTaskContent.m in Sources */,
 				8A4C1EBA153842330025B3BF /* BkBlockStepOperation.m in Sources */,

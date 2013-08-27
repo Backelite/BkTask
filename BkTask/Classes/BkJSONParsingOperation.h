@@ -8,8 +8,14 @@
 
 #import "BkBasicStepOperation.h"
 
+/**
+ *  A JSON parsing step using NSJSONSerialization.
+ */
 @interface BkJSONParsingOperation : BkBasicStepOperation
 
+/**
+ *  Options to pass to the JSON parser. Default value is 0.
+ */
 @property (nonatomic, assign) NSJSONReadingOptions jsonOptions;
 
 @end

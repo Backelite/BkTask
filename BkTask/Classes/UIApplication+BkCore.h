@@ -12,7 +12,7 @@
 
 /**
  * Enables the network activitiy indicator in the status bar.
- * This method also increments a counter that is used 
+ * This method also increments a counter that is used
  * to determine when to disable the indicator.
  */
 - (void) enableNetworkActivityIndicator;

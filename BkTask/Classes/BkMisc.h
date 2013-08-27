@@ -6,7 +6,9 @@
 //  Copyright (c) 2012 Backelite. All rights reserved.
 //
 
-/// an easy way to declare a copy of anything as a weak reference
+/**
+ *  An easy way to declare a copy of anything as a weak reference
+ */
 #if __has_feature(objc_arc_weak)
 #  define BkWeakTypeof(obj) __weak __typeof__(obj)
 #elif __has_feature(objc_arc)
@@ -14,6 +16,7 @@
 #else
 #  define BkWeakTypeof(obj) __block __typeof__(obj)
 #endif
+
 /// an easy way to declare a copy of self as a weak reference
 #define BkWeakSelf BkWeakTypeof(self)
 #define BkDeclareWeakSelf BkWeakSelf weakSelf = self
@@ -28,8 +31,8 @@
 #endif
 
 /**
- * like dispatch_sync but without dead lock if 'queue' is the current queue.
- * deadlocks are still possible in other circumpstances
+ * Like dispatch_sync but without dead lock if 'queue' is the current queue.
+ * Deadlocks are still possible in other circumpstances
  */
 static inline void bk_dispatch_sync(dispatch_queue_t queue, dispatch_block_t block)
 {

@@ -11,15 +11,37 @@
 @class BkTask;
 @protocol BkTaskObserverDelegate;
 
-
+/**
+ *  The BkTaskObserver is an object defined to monitor the progress of a task as KVO monitor can changes in properties. 
+ *  Currently it is only allowed to be notified when a task complete is this class is intented to be improved in the future.
+ */
 @interface BkTaskObserver : NSObject
 
+/**
+ *  The object to notify when task state changes.
+ */
 @property (unsafe_unretained, nonatomic) id <BkTaskObserverDelegate> delegate;
 
+/**
+ *  Add an observer for a task.
+ *
+ *  @param aTask The task to observe.
+ */
 - (void) observeTask:(BkTask *)aTask;
-- (void) stopObservingTask:(BkTask *)aTask; //< Tells to stop observing 'aTask'. Note that BkTaskObserver will automatically stop observing finished tasks
 
-- (id <NSFastEnumeration, NSCopying>) tasks; //< returns a list of observed tasks.
+/**
+ *  Stopping task observation. Note that BkTaskObserver will automatically stop observing finished tasks.
+ *
+ *  @param aTask The task to stop observing.
+ */
+- (void) stopObservingTask:(BkTask *)aTask;
+
+/**
+ *  Getter for observed tasks.
+ *
+ *  @return The list of observed tasks.
+ */
+- (id <NSFastEnumeration, NSCopying>) tasks;
 
 @end
 
@@ -28,6 +50,12 @@
 
 @required
 
+/**
+ *  Sent to indicate that a task finished.
+ *
+ *  @param observer The object set as an observer.
+ *  @param task     The observed task.
+ */
 - (void) observer:(BkTaskObserver *)observer taskDidFinish:(BkTask *)task;
 
 @end

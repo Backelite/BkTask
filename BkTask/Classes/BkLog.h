@@ -73,7 +73,7 @@
  * @author Pierre Monod-Broca
  * @author Marco Nikic
  *
- * @ingroup utilities
+ * @ingroup Utilities
  */
 @interface BkLog : NSObject {
 

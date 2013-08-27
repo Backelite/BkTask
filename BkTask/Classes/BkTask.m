@@ -11,7 +11,6 @@
 #import "BkAssert.h"
 #import "BkTaskContent.h"
 #import "BkLog.h"
-#import "NSObject+BkExtensions.h"
 #import "BkMisc.h"
 
 //@class BkTaskStepBuilder;
@@ -80,12 +79,12 @@ typedef enum BkTaskTarget {
 - (void)dealloc
 {
     NSAssert(NO == isExecuting, @"BkTask (%p) is being deallocated while executing !", self);
-//    for (BkStepOperation *aStep in steps) {
-//        [aStep cancel];
-//        aStep.task = nil;
-//    }
-//    for (BkStepOperation *aStep in currentSteps) {
-//    }
+    //    for (BkStepOperation *aStep in steps) {
+    //        [aStep cancel];
+    //        aStep.task = nil;
+    //    }
+    //    for (BkStepOperation *aStep in currentSteps) {
+    //    }
     [completionHandlers release];
     [content release];
     [currentSteps release];
@@ -188,7 +187,7 @@ static NSString *stringFromBool(BOOL yesorno)
     BkStepOperation *nextStep = (chainRemoval ? nil : aStep.nextStep);
     previousStep.nextStep = nextStep;
     nextStep.previousStep = previousStep;
-
+    
     [[aStep retain] autorelease];
     [steps removeObject:aStep];
     aStep.task = nil;
@@ -236,12 +235,9 @@ static NSString *stringFromBool(BOOL yesorno)
             }
         }
     } else {
-        // for when the compatibility will be > 4.0
-           // bk_dispatch_sync(dispatch_get_main_queue(), ^{
-             ///   [self invokeTargets:handlers withOutput:output];
-            //});
-//        } else {
-        [self performSelectorOnMainThread:@selector(invokeTargets:withOutput:) withObject:handlers withObject:output waitUntilDone:YES];
+        bk_dispatch_sync(dispatch_get_main_queue(), ^{
+            [self invokeTargets:handlers withOutput:output];
+        });
     }
 }
 
@@ -319,7 +315,7 @@ static NSString *stringFromBool(BOOL yesorno)
 - (void)cancel
 {
     self.isCancelled = YES;
-
+    
     //if interesting to cancel regarding, for example, the current progress...
     self.completionHandlers = nil;
     self.failureHandlers = nil;
@@ -354,7 +350,7 @@ static NSString *stringFromBool(BOOL yesorno)
     BkTaskContent *stepOutput = [aStep content];
     NSError *anError = [aStep error];
     self.content = stepOutput;
-
+    
     if (nil != anError) {
         self.error = [self step:aStep didFailWithError:anError];
         [self finishAndInvokeTargets:BkTaskTargetFailure];
@@ -373,7 +369,7 @@ static NSString *stringFromBool(BOOL yesorno)
 
 - (NSError *)step:(id<BkTaskStep>)aStep didFailWithError:(NSError *)anError
 {
-//    BKLogE(@"In some task (%@), some step (%@) failed awfully (%@)", self, aStep, anError);
+    //    BKLogE(@"In some task (%@), some step (%@) failed awfully (%@)", self, aStep, anError);
     return anError;
 }
 
@@ -384,7 +380,7 @@ static NSString *stringFromBool(BOOL yesorno)
     self.isFinished = YES;
     self.isExecuting = NO;
     BkSimpleAssert([currentSteps count] == 0);
-
+    
     switch (targetType) {
         case BkTaskTargetSuccess:
             [self invokeTargetsForSuccess];
@@ -396,16 +392,9 @@ static NSString *stringFromBool(BOOL yesorno)
             //Do nothing
             break;
     }
-
+    
     self.completionHandlers = nil;
     self.failureHandlers = nil;
-}
-
-#pragma mark -
-
-- (id)step:(BkStepOperation *)aStep parameterValueForKey:(NSString *)key
-{
-    return nil;
 }
 
 #pragma mark - Queues
@@ -493,25 +482,4 @@ static NSString *stringFromBool(BOOL yesorno)
 {
     block(t, output);
 }
-@end
-
-@implementation BkTask (Deprecated)
-
-- (void) addTarget:(id)target selector:(SEL)selector
-{
-    [self addTargetInvocation:[BkTaskTargetInvocation invocationWithTarget:target selector:selector]
-                   inHandlers:completionHandlers];
-}
-
-- (void) removeTarget:(id)target
-{
-    [self removeTargetCompletions:target];
-}
-
-- (void)addTarget:(id)target failureSelector:(SEL)selector
-{
-    [self addTargetInvocation:[BkTaskTargetInvocation invocationWithTarget:target selector:selector]
-                   inHandlers:failureHandlers];
-}
-
 @end

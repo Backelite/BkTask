@@ -20,14 +20,18 @@ typedef void (^BkTaskFailure)(BkTask *task, NSError *error);
  *
  * Meant particularly to handle url request when used with [BkURLRequestOperation]
  *
- * @ingroup operation
+ * @ingroup Task
  * @see BkTask, BkURLRequestOperation (in BkNetwork), BkTask(BkURLRequestOperation) (in BkNetwork)
  */
 @interface BkTask : NSObject <NSCopying>
 
 @property (strong, nonatomic) BkStepOperation *initialStep;
 @property (strong, nonatomic, readonly) BkTaskContent *content;
-@property (strong, nonatomic) id taskId; //< application defined value that can be used to identify a task
+
+/**
+ *  Application defined value that can be used to identify a task.
+ */
+@property (strong, nonatomic) id taskId;
 
 /**
  *  Is set to YES when the task starts, then to NO when it stops, whether it is cancelled, done, or has failed. KVO compliant. Thread safe.
@@ -50,8 +54,6 @@ typedef void (^BkTaskFailure)(BkTask *task, NSError *error);
  *  @return An initialized task.
  */
 - (id) init;
-///Helper
-//- (id) initWithRequest:(NSURLRequest *)request steps:(NSArray *)stepsOrConfigs;
 
 /**
  *  Adds a new step to receiver after the last one.
@@ -77,27 +79,44 @@ typedef void (^BkTaskFailure)(BkTask *task, NSError *error);
  */
 - (void) insertStep:(BkStepOperation *)aStep beforeStep:(BkStepOperation *)nextStep;
 
-///
-///
-///
+
 /**
  *  Adds a block to be called on completion.
  *
  *  @param target An object intended to be used to remove the related completion block when necessary. It is unretained but beware that the same object could be retained by the completion block.
  *  @param completionBlock A block called when the task is finished.
+ *  @see \ref removeTargetCompletions:
  */
 - (void) addTarget:(id)target completion:(BkTaskCompletion)completionBlock;
-/// removes the completion handlers registered for target.
-/// if 'target' is the last target, it may cancel the task
+
+/**
+ *  Removes all completion blocks related to a target. If all completion blocks are removed, the task is automatically canceled.
+ *
+ *  @param target The object on which completion blocks have been added.
+ *  @see \ref addTarget:completion:
+ */
 - (void) removeTargetCompletions:(id)target;
 
-/// adds a block to be called on failure.
-/// 'target' is intended to be used to remove the related block when necessary.
-/// 'target' is unretained but beware that the same object could be retained by the block.
+/**
+ *  Adds a block to be called on failure.
+ *
+ *  @param target       An object intended to be used to remove the related failure block when necessary. It is unretained but beware that the same object could be retained by the failure block.
+ *  @param failureBlock A block called when the task fails to complete.
+ *  @see \ref removeTargetFailures:
+ */
 - (void) addTarget:(id)target failure:(BkTaskFailure)failureBlock;
-/// removes the failure handlers registered for target.
+
+/**
+ *  Removes the failure handlers registered for target.
+ *
+ *  @param target The object on which failure blocks have been added.
+ *  @see \ref addTarget:failure:
+ */
 - (void) removeTargetFailures:(id)target;
 
+/**
+ *  Begins the execution of the task.
+ */
 - (void) start;
 
 /**
@@ -106,47 +125,46 @@ typedef void (^BkTaskFailure)(BkTask *task, NSError *error);
  */
 - (void) cancel;
 
-- (id) step:(id <BkTaskStep>)aStep parameterValueForKey:(NSString *)key;
 
 @end
 
 @protocol BkTaskStep <NSObject, NSCopying>
 
 @required
-/// the setter are to be used exclusively by the owning task
-@property (unsafe_unretained, nonatomic) BkTask *task;
-/// the setter are to be used exclusively by the owning task
-@property (unsafe_unretained, nonatomic) BkStepOperation *previousStep;
-/// the setter are to be used exclusively by the owning task
-@property (unsafe_unretained, nonatomic) BkStepOperation *nextStep;
-//@property (strong, nonatomic) NSArray *nextSteps;
 
+/**
+ *  The setter must be used exclusively by the owning task
+ */
+@property (unsafe_unretained, nonatomic) BkTask *task;
+
+/**
+ *  The setter must be used exclusively by the owning task
+ */
+@property (unsafe_unretained, nonatomic) BkStepOperation *previousStep;
+
+/**
+ *  The setter must be used exclusively by the owning task
+ */
+@property (unsafe_unretained, nonatomic) BkStepOperation *nextStep;
+
+/**
+ *  The content to be processed by the step
+ */
 @property (strong, nonatomic) BkTaskContent *content;
+
+/**
+ *  Getter for the step error object. When error is different from nil, the task will fail and call the failure block.
+ *
+ *  @return The step error object.
+ */
 - (NSError *) error;
 
 @optional
-- (NSOperationQueue *) stepOperationQueue; //< do not return the main queue
-
-@end
-
-#pragma mark Deprecated
-
-@interface BkTask (Deprecated)
-
-/// adds a target/selector pair that will be invoked once the task is completed.
-/// 'selector' should have the following signature: - (void) taskDidEnd:(BkTask *)task output:(id)output.
-/// prefer the -addTarget:completion: alternative.
-/// @deprecated use \ref addTarget:completion: instead.
-- (void) addTarget:(id)target selector:(SEL)selector DEPRECATED_ATTRIBUTE;
-
-/// adds a target/selector pair that will be invoked if the task fails.
-/// 'selector' should have the following signature: - (void) taskDidEnd:(BkTask *)task error:(NSError *)error.
-/// @deprecated use \ref addTarget:failure: instead.
-- (void) addTarget:(id)target failureSelector:(SEL)selector DEPRECATED_ATTRIBUTE;
-
-/// removes the completion handlers registered for target.
-/// if 'target' is the last target, it may cancel the task
-/// @deprecated use \ref removeTargetCompletions: instead.
-- (void) removeTarget:(id)target DEPRECATED_ATTRIBUTE;
+/**
+ *   Getter for the operation queue executing the step. This method does not return the main queue as steps are executed in background
+ *
+ *  @return The operation queue executing the step.
+ */
+- (NSOperationQueue *) stepOperationQueue;
 
 @end
