@@ -21,6 +21,7 @@
 		2BB4373D17CD0AE80019A035 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BB4373B17CD0AE80019A035 /* MainStoryboard.storyboard */; };
 		2BB4375417CD130D0019A035 /* BKWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB4373317CD0AE80019A035 /* BKWAppDelegate.m */; };
 		2BB4375517CD13100019A035 /* BKWSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB4373F17CD0AE80019A035 /* BKWSearchViewController.m */; };
+		2BB6C6F917CE364A00CCC0BA /* BKWWeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB6C6F717CE364A00CCC0BA /* BKWWeatherViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,8 @@
 		2BB4373E17CD0AE80019A035 /* BKWSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKWSearchViewController.h; sourceTree = "<group>"; };
 		2BB4373F17CD0AE80019A035 /* BKWSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKWSearchViewController.m; sourceTree = "<group>"; };
 		2BB4375217CD0D710019A035 /* BKWConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKWConstants.h; sourceTree = "<group>"; };
+		2BB6C6F617CE364A00CCC0BA /* BKWWeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKWWeatherViewController.h; sourceTree = "<group>"; };
+		2BB6C6F717CE364A00CCC0BA /* BKWWeatherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKWWeatherViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,12 +108,11 @@
 		2BB4372917CD0AE80019A035 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				2B3E966617CDE88700FDA6BE /* Model */,
 				2BB4373217CD0AE80019A035 /* BKWAppDelegate.h */,
 				2BB4373317CD0AE80019A035 /* BKWAppDelegate.m */,
+				2B3E966617CDE88700FDA6BE /* Model */,
+				2BB6C6F517CE35E600CCC0BA /* Controllers */,
 				2BB4373B17CD0AE80019A035 /* MainStoryboard.storyboard */,
-				2BB4373E17CD0AE80019A035 /* BKWSearchViewController.h */,
-				2BB4373F17CD0AE80019A035 /* BKWSearchViewController.m */,
 				2BB4372A17CD0AE80019A035 /* Supporting Files */,
 				2BB4375217CD0D710019A035 /* BKWConstants.h */,
 			);
@@ -129,6 +131,17 @@
 				2BB4373917CD0AE80019A035 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2BB6C6F517CE35E600CCC0BA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2BB4373E17CD0AE80019A035 /* BKWSearchViewController.h */,
+				2BB4373F17CD0AE80019A035 /* BKWSearchViewController.m */,
+				2BB6C6F617CE364A00CCC0BA /* BKWWeatherViewController.h */,
+				2BB6C6F717CE364A00CCC0BA /* BKWWeatherViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +216,7 @@
 				2BB4375517CD13100019A035 /* BKWSearchViewController.m in Sources */,
 				2B3E966917CDE93000FDA6BE /* BKWCitySearch.m in Sources */,
 				2B3E966C17CDE94900FDA6BE /* BKWForecast.m in Sources */,
+				2BB6C6F917CE364A00CCC0BA /* BKWWeatherViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

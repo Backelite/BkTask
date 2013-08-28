@@ -7,6 +7,8 @@
 //
 
 #import "BKWSearchViewController.h"
+#import "BKWWeatherViewController.h"
+
 #import "BKWConstants.h"
 
 // Model
@@ -103,6 +105,21 @@
     [searchBar resignFirstResponder];
 }
 
+#pragma mark - Segue
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"pushWeatherView"])
+    {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)sender];
+        BKWForecast *forecast = [self.citySearch.forecasts objectAtIndex:indexPath.row];
+        
+        BKWWeatherViewController *weatherController = segue.destinationViewController;
+        weatherController.title = forecast.city;
+        [weatherController setForecast:forecast];
+    }
+}
+
 #pragma mark - UITableView DataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -116,6 +133,7 @@
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kCellID];
     BKWForecast *forecast = [self.citySearch.forecasts objectAtIndex:indexPath.row];
     [cell.textLabel setText:[NSString stringWithFormat:@"%@ (%@)", forecast.city, forecast.countryCode]];
+    [cell.detailTextLabel setText:[NSString stringWithFormat:@"%.f°C", forecast.temperature]];
     return cell;
 }
 
