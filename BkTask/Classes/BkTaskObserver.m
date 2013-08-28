@@ -106,7 +106,7 @@ static NSString *taskIsFinishedKeyPath = @"isFinished";
 
 - (NSSet *) tasks
 {
-    return [[_observedTasks copy] autorelease];
+    return [_observedTasks copy];
 }
 
 @end

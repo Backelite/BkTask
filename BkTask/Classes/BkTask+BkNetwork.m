@@ -18,8 +18,7 @@
     BkTask *newtask = [BkTask new];
     BkURLRequestOperation *reqOp = [[BkURLRequestOperation alloc] initWithRequest:aRequest];
     [newtask addStep:reqOp];
-    [reqOp release];
-    return [newtask autorelease];
+    return newtask;
 }
 
 + (id) taskWithJSONRequest:(NSURLRequest *)aRequest
@@ -27,7 +26,6 @@
     BkTask *task = [self taskWithRequest:aRequest];
     BkJSONParsingOperation *jsonOp = [BkJSONParsingOperation new];
     [task addStep:jsonOp];
-    [jsonOp release];
     return task;
 }
 

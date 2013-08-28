@@ -37,7 +37,6 @@
             //An error has occured, so we print JSON string to help debugging
             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             BKLogE(@"invalid as json:\n%@", string);
-            [string release];
 #endif
         }
     }

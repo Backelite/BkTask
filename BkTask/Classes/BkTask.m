@@ -79,21 +79,6 @@ typedef enum BkTaskTarget {
 - (void)dealloc
 {
     NSAssert(NO == isExecuting, @"BkTask (%p) is being deallocated while executing !", self);
-    //    for (BkStepOperation *aStep in steps) {
-    //        [aStep cancel];
-    //        aStep.task = nil;
-    //    }
-    //    for (BkStepOperation *aStep in currentSteps) {
-    //    }
-    [completionHandlers release];
-    [content release];
-    [currentSteps release];
-    [error release];
-    [failureHandlers release];
-    [initialStep release];
-    [lastStep release];
-    [steps release];
-    [super dealloc];
 }
 
 - (id) init
@@ -116,7 +101,6 @@ typedef enum BkTaskTarget {
         BkSimpleAssert([step conformsToProtocol:@protocol(NSCopying)]);
         BkStepOperation *stepCopy = [step copyWithZone:zone];
         [copy addStep:stepCopy];
-        [stepCopy release];
     }
     copy->completionHandlers = [completionHandlers copyWithZone:zone];
     copy->failureHandlers = [failureHandlers copyWithZone:zone];
@@ -188,11 +172,10 @@ static NSString *stringFromBool(BOOL yesorno)
     previousStep.nextStep = nextStep;
     nextStep.previousStep = previousStep;
     
-    [[aStep retain] autorelease];
     [steps removeObject:aStep];
     aStep.task = nil;
     if (chainRemoval) {
-        while (nil != (aStep = [[aStep.nextStep retain] autorelease])) {
+        while (nil != (aStep = aStep.nextStep)) {
             [steps removeObject:aStep];
             aStep.task = nil;
         }
@@ -222,7 +205,6 @@ static NSString *stringFromBool(BOOL yesorno)
             ++i;
         }
         [handlers removeObjectsAtIndexes:toDelete];
-        [toDelete release];
     }
 }
 
@@ -326,7 +308,6 @@ static NSString *stringFromBool(BOOL yesorno)
 {
     BkTaskContent *newContent = (inputContent == nil ? [BkTaskContent new] : [inputContent copy]);
     [aStep setContent:newContent];
-    [newContent release];
     [currentSteps addObject:aStep];
     [aStep addObserver:self forKeyPath:@"isFinished" options:0 context:&kvoContextStepIsFinished];
     NSOperationQueue *queue = nil;
@@ -440,7 +421,7 @@ static NSString *stringFromBool(BOOL yesorno)
     BkTaskTargetInvocationBlock *b = [BkTaskTargetInvocationBlock new];
     b.target = target;
     b.block = completion;
-    return [b autorelease];
+    return b;
 }
 + (id)invocationWithTarget:(id)target selector:(SEL)selector
 {
@@ -449,7 +430,7 @@ static NSString *stringFromBool(BOOL yesorno)
     BkTaskTargetInvocationSelector *b = [BkTaskTargetInvocationSelector new];
     b.target = target;
     b.selector = selector;
-    return [b autorelease];
+    return b;
 }
 - (void)invokeWithTask:(BkTask *)tr output:(id)output
 {
@@ -464,19 +445,17 @@ static NSString *stringFromBool(BOOL yesorno)
     NSInvocation *invoc = [NSInvocation invocationWithMethodSignature:[self.target methodSignatureForSelector:selector]];
     [invoc setTarget:self.target];
     [invoc setSelector:selector];
-    [invoc setArgument:&t atIndex:2];
-    [invoc setArgument:&output atIndex:3];
+    __unsafe_unretained BkTask *tempTask = t;
+    [invoc setArgument:&tempTask atIndex:2];
+    
+    __unsafe_unretained id tempOutput = output;
+    [invoc setArgument:&tempOutput atIndex:3];
     [invoc invoke];
 }
 @end
 
 @implementation BkTaskTargetInvocationBlock
 @synthesize block;
-- (void)dealloc
-{
-    Block_release(block);
-    [super dealloc];
-}
 
 - (void)invokeWithTask:(BkTask *)t output:(id)output
 {

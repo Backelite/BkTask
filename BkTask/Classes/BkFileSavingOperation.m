@@ -18,18 +18,12 @@
 @synthesize fileURL;
 
 #pragma mark - Life Cycle
-- (void) dealloc
-{
-    [fileURL release];
-
-    [super dealloc];
-}
 
 + (id)saveOperationWithFile:(NSURL *)fileURL
 {
     BkFileSavingOperation *ope = [self new];
     ope.fileURL = fileURL;
-    return [ope autorelease];
+    return ope;
 }
 
 #pragma mark - Copy

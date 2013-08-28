@@ -24,12 +24,6 @@
 
 #pragma mark - Life Cycle
 
-- (void)dealloc
-{
-    [content release];
-    [error release];
-    [super dealloc];
-}
 
 - (id) init
 {

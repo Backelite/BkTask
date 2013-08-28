@@ -18,14 +18,6 @@ NSString * const BkTaskContentBodyObject = @"bodyObject";
 @dynamic bodyData;
 @dynamic bodyObject;
 
-#pragma mark - Destruction
-
-- (void) dealloc
-{
-    [values release];
-    [super dealloc];
-}
-
 #pragma mark - Construction
 
 - (id) init
@@ -82,7 +74,7 @@ static NSString *BKPropertyNameFromSetter(NSString *setter)
     [key deleteCharactersInRange:NSMakeRange(0, 3)]; // remove 'set' prefix
     [key replaceCharactersInRange:NSMakeRange(0, 1) // lower first char
                        withString:[[key substringWithRange:NSMakeRange(0, 1)] lowercaseString]];
-    return [key autorelease];
+    return key;
 }
 
 static void dynamicSetter(id self, SEL _cmd, id value)

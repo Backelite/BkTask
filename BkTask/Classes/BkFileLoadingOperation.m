@@ -12,17 +12,12 @@
 @implementation BkFileLoadingOperation
 
 #pragma mark - Life Cycle
-- (void) dealloc
-{
-    [_fileURL release];
-    [super dealloc];
-}
 
 + (id)loadOperationWithFile:(NSURL *)fileURL
 {
     BkFileLoadingOperation *ope = [self new];
     ope.fileURL = fileURL;
-    return [ope autorelease];
+    return ope;
 }
 
 #pragma mark - Copy

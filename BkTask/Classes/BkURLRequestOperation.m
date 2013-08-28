@@ -44,16 +44,6 @@
 
 #pragma mark - Life Cycle
 
-- (void)dealloc
-{
-    [connection release];
-    [content release];
-    [downloadedData release];
-    [error release];
-    [request release];
-    [response release];
-    [super dealloc];
-}
 
 - (id)init
 {
@@ -70,7 +60,7 @@
 
 + (instancetype) operationWithRequest:(NSURLRequest *)urlRequest
 {
-    return [[[self alloc] initWithRequest:urlRequest] autorelease];
+    return [[self alloc] initWithRequest:urlRequest];
 }
 
 #pragma mark - Copy
@@ -153,7 +143,6 @@
         [userInfo setObject:[httpResponse.URL absoluteString] forKey:NSURLErrorFailingURLStringErrorKey];
         [userInfo setObject:@(statusCode) forKey:@"BkHTTPStatusCode"];
         self.error = [NSError errorWithDomain:@"BkHTTPErrorDomain" code:statusCode userInfo:userInfo];
-        [userInfo release];
     }
 }
 

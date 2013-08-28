@@ -11,30 +11,18 @@
 
 @interface BkBlockStepOperation ()
 
-@property (nonatomic, readonly) BkBlockStepOperationBlock block;
-@property (nonatomic, readonly) NSString *inputKey;
-@property (nonatomic, readonly) NSString *outputKey;
+@property (copy, nonatomic) BkBlockStepOperationBlock block;
+@property (copy, nonatomic) NSString *inputKey;
+@property (copy, nonatomic) NSString *outputKey;
 
 @end
 
 @implementation BkBlockStepOperation {
     NSOperationQueue *_stepOperationQueue;
 }
-@synthesize block;
-@synthesize inputKey;
-@synthesize outputKey;
 
 #pragma mark - Destruction
 
-- (void) dealloc
-{
-    [block release];
-    [inputKey release];
-    [outputKey release];
-    [_stepOperationQueue release];
-    
-    [super dealloc];
-}
 
 
 #pragma mark - Construction
@@ -46,21 +34,21 @@
 
 + (id)blockOperationWithQueue:(NSOperationQueue *)queue block:(BkBlockStepOperationBlock)workBlock
 {
-    return [[[self alloc] initWithInputKey:BkTaskContentBodyObject outputKey:BkTaskContentBodyObject queue:queue block:workBlock] autorelease];
+    return [[self alloc] initWithInputKey:BkTaskContentBodyObject outputKey:BkTaskContentBodyObject queue:queue block:workBlock];
 }
 + (id)blockOperationWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey block:(BkBlockStepOperationBlock)workBlock
 {
-    return [[[self alloc] initWithInputKey:inKey outputKey:outKey block:workBlock] autorelease];
+    return [[self alloc] initWithInputKey:inKey outputKey:outKey block:workBlock];
 }
 
 - (id)initWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey queue:(NSOperationQueue *)queue block:(BkBlockStepOperationBlock)workBlock
 {
     if ((self = [super init])) {
         NSParameterAssert(workBlock != nil);
-        _stepOperationQueue = [queue retain];
-        block = [workBlock copy];
-        inputKey = [inKey copy];
-        outputKey = [outKey copy];
+        _stepOperationQueue = queue;
+        self.block = workBlock;
+        self.inputKey = inKey;
+        self.outputKey = outKey;
     }
     return self;
 }
@@ -78,7 +66,6 @@
 - (id) init
 {
     [self doesNotRecognizeSelector:_cmd]; // use an other init method
-    [self release];
     self = nil;
     return self;
 }
@@ -88,10 +75,10 @@
 - (id)copyWithZone:(NSZone *)zone
 {
     BkBlockStepOperation *copy = [super copyWithZone:zone];
-    copy->block = [block copy];
-    copy->inputKey = [inputKey copy];
-    copy->outputKey = [outputKey copy];
-    copy->_stepOperationQueue = [_stepOperationQueue retain];
+    copy.block = self.block;
+    copy.inputKey = self.inputKey;
+    copy.outputKey = self.outputKey;
+    copy->_stepOperationQueue = _stepOperationQueue;
     return copy;
 }
 
@@ -99,7 +86,7 @@
 
 - (id)processInput:(id)theInput error:(NSError **)error
 {
-    return block(theInput, error);
+    return self.block(theInput, error);
 }
 
 #pragma mark - Queue

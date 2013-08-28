@@ -41,7 +41,7 @@ static NSFileHandle *logFileHandle = nil;
 
 + (void) closeLogFile
 {
-	[logFileHandle release], logFileHandle = nil;
+	logFileHandle = nil;
 }
 
 + (void) initialize
@@ -68,7 +68,6 @@ static NSFileHandle *logFileHandle = nil;
     [tmp setValue:[classesConfiguration valueForKey:BKLogLevelWarning"Default"] forKey:BKLogLevelWarning];
     [tmp setValue:[classesConfiguration valueForKey:BKLogLevelDebug"Default"]   forKey:BKLogLevelDebug];
     levelsConfiguration = [tmp copy];
-    [tmp release];
     
 	prefixDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:
 						@"!! ", BKLogLevelError,
@@ -94,7 +93,7 @@ static NSFileHandle *logFileHandle = nil;
 			}
 		}
 		
-		logFileHandle = [[NSFileHandle fileHandleForUpdatingAtPath:logFileName] retain];
+		logFileHandle = [NSFileHandle fileHandleForUpdatingAtPath:logFileName];
 		[logFileHandle seekToEndOfFile];
 		
 		NSMutableString *header = [[NSMutableString alloc] init];
@@ -112,7 +111,6 @@ static NSFileHandle *logFileHandle = nil;
 		[header appendString:@"==============================\n\n"];
 
 		[logFileHandle writeData:[header dataUsingEncoding:NSUTF8StringEncoding]];
-		[header release];
 		
 #ifdef __IPHONE_OS_VERSION_MIN_REQUIRED
 		[[NSNotificationCenter defaultCenter] addObserver:self 
@@ -130,46 +128,43 @@ static NSFileHandle *logFileHandle = nil;
 		return;
 	}
 	
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	va_list ap;
-	NSString *print = nil;
-
-	
-	NSString *file = [[NSString alloc] initWithCString:sourceFile encoding:NSUTF8StringEncoding];
-	NSString *filename = [file lastPathComponent];
-	[file release];
-
-	// Check if log is configured
-	BOOL shouldShowLog = YES;
-	if ([classesConfiguration count] > 0) {
-		shouldShowLog = NO;
-		id value = [[classesConfiguration objectForKey:level] objectForKey:filename];
-		if (value) {
-			shouldShowLog = [value boolValue];
-		}
-        else if ((value = [classesConfiguration objectForKey:[level stringByAppendingString:@"Default"]]) != nil) {
-            shouldShowLog = [value boolValue];
+    @autoreleasepool {
+        va_list ap;
+        NSString *print = nil;
+        
+        
+        NSString *file = [[NSString alloc] initWithCString:sourceFile encoding:NSUTF8StringEncoding];
+        NSString *filename = [file lastPathComponent];
+        
+        // Check if log is configured
+        BOOL shouldShowLog = YES;
+        if ([classesConfiguration count] > 0) {
+            shouldShowLog = NO;
+            id value = [[classesConfiguration objectForKey:level] objectForKey:filename];
+            if (value) {
+                shouldShowLog = [value boolValue];
+            }
+            else if ((value = [classesConfiguration objectForKey:[level stringByAppendingString:@"Default"]]) != nil) {
+                shouldShowLog = [value boolValue];
+            }
         }
-	}
-	if (!shouldShowLog) {
-		[pool drain];
-		return;
-	}
-	
-	va_start(ap, format);
-	print = [[NSString alloc] initWithFormat:format arguments:ap];
-	va_end(ap);
-	
-	//NSLog handles synchronization issues
-	NSString *logString = [NSString stringWithFormat:@"%@:%d %@%@", 
-						   filename, lineNumber, [prefixDictionary objectForKey:level], print];
-	NSLog(@"%@", logString);
-	if (shouldWriteToFile) {
-		[logFileHandle writeData:[[NSString stringWithFormat:@"%@\n", logString] dataUsingEncoding:NSUTF8StringEncoding]];		
-	}
-	
-	[print release];
-	[pool drain];
+        if (!shouldShowLog) {
+            return;
+        }
+        
+        va_start(ap, format);
+        print = [[NSString alloc] initWithFormat:format arguments:ap];
+        va_end(ap);
+        
+        //NSLog handles synchronization issues
+        NSString *logString = [NSString stringWithFormat:@"%@:%d %@%@",
+                               filename, lineNumber, [prefixDictionary objectForKey:level], print];
+        NSLog(@"%@", logString);
+        if (shouldWriteToFile) {
+            [logFileHandle writeData:[[NSString stringWithFormat:@"%@\n", logString] dataUsingEncoding:NSUTF8StringEncoding]];		
+        }
+        
+    }
 
 	return;
 }
