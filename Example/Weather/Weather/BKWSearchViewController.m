@@ -42,7 +42,7 @@
 {
     [self.searchTask cancel];
     
-    // Create NSURRequest
+    // Create NSURRequest to search a city
     NSString *cityQuery = [NSString stringWithFormat:[NSString stringWithFormat:@"%@", CITY_QUERY],
                            [cityName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSString *urlString = [NSString stringWithFormat:@"%@%@", BASE_URL, cityQuery];
