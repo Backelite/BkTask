@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Backelite. All rights reserved.
 //
 
-#import <BkTask/BkTask.h>
+#import "BkTask.h"
 #import "BkBasicStepOperation.h"
 
 /**

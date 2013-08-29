@@ -305,7 +305,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Weather/Weather-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../BkTask/Classes";
 				INFOPLIST_FILE = "Weather/Weather-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -321,7 +321,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Weather/Weather-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../BkTask/Classes";
 				INFOPLIST_FILE = "Weather/Weather-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
