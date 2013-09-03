@@ -33,10 +33,23 @@ __To make this step even easier, support for cocoapods is coming soon.__
 
 ### Using BkTask
 
+#### Anatomy of a task
+A _task_ is made of multiple _steps_ sharing a _content_ between them. A _task_ monitor _step_ execution and ensure that _content_ is passed through steps. When all the _steps_ are finished, the _task_ notify every observer registered by calling a success block. If one _step_ fails to execute, the _task_ notify observers by calling a failure block. Note that observers for success and failure may be different.  
+A _step_ takes data from its input, process them and return the result through its output. The _content_ is processed by each _step_ and is returned when each step has completed.  
+A few things to know : 
+
+* Observers are not retained by a task
+* If all observers are removed, the task will stop executing automatically
+* A task doesn't retain itself. This means you have to keep ownership a the task until its execution finished or is canceled.
+
+#### Let's code now
+
+
 -------
 
 ### Sample project
-
+The sample project is a little weather application. You can search for a city and see related forecasts. It demonstrates how to create a task that will download and parse JSON. It also shows how to add a simple custom step to a task for JSON Dictionary to model object conversion.  
+Is is intented to run on iOS 6.0 an above. We recommend using Xcode 4.6.2 and above to build it.
 
 ## Requirements
 BkTask requires iOS 5.0 and above. If you need iOS 4.3 compatibility, you can exclude the `BkJSONParsingOperation` class of the BkTask target and it should be okay. 
