@@ -43,7 +43,45 @@ A few things to know :
 * A task doesn't retain itself. This means you have to keep ownership a the task until its execution finished or is canceled.
 
 #### Let's code now
+##### The most basic task ever
 
+```Objective-C
+
+	//Create a task
+	BkTask *aTask = [[BkTask alloc] init];
+
+	//Create a file load step
+	BkFileLoadingOperation *fileLoadOperation = [BkFileLoadingOperation loadOperationWithFile:FILE_TO_OPEN_URL];
+
+	//Add the step to the task
+	[aTask addStep:fileLoadOperation];
+
+	//Set completion and failure blocks
+	[aTask addTarget:self completion:^(BkTask *task, id output) {
+    NSLog(@"Task completed with success");
+	}];
+	[aTask addTarget:self failure:^(BkTask *task, NSError *error) {
+    NSLog(@"Task failed");
+	}];
+
+	//Start the task
+	self.myTask = aTask; //To retain the task
+	[self.myTask start];
+```
+
+Of course, a task with one step is not very usefull because GCD is better at that. However, when you have a workflow with multiple steps, it becomes a mess of nested blocks with GCD while BkTask takes care of chaining steps and passing data through them.
+
+##### Quick tasks
+
+For frequent use cases, there are helper methods to build preconfigured tasks.  
+```Objective-C
+
+	// To create a task with a download URL step
+	+ (id) taskWithRequest:(NSURLRequest *)aRequest;
+
+	// To create a task with a download URL step and a JSON parsing step
+	+ (id) taskWithJSONRequest:(NSURLRequest *)aRequest;
+```
 
 -------
 
