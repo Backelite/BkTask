@@ -17,15 +17,15 @@ v 0.6
 ## Getting started
 ### Xcode configuration
 The simplest way to use BkTask with your project is with Xcode 4 workspaces. Just drag and drop `BkTask.xcodeproj` below your other projects in the workspace.
-![Drop BkTask xcodeproj into your workspace](/Images/BkTask_1.jpg "Drop BkTask xcodeproj into your workspace")  
+![Drop BkTask xcodeproj into your workspace](http://git.backelite.com/raw/?f=Images/BkTask_1.jpg&r=backelite/BkTask.git "Drop BkTask xcodeproj into your workspace")  
 
 Then, select your project's target and click on the `Build Phases` tab. Unfold the `Link Binary With Libraries` section and click on the + button to add a new library.
 Select `libBkTask.a` and click `Add`.  
-![Add libBkTask.a to your target](/Images/BkTask_2.jpg "Add libBkTask.a to your target")  
+![Add libBkTask.a to your target](http://git.backelite.com/raw/?f=Images/BkTask_2.jpg&r=backelite/BkTask.git "Add libBkTask.a to your target")  
 
 As it is a static library, you will need to indicate the path to BkTask headers. To do so, select your project's target and click on the `Build Settings` tab. Find the `Header Search Paths` and set the path to the `Classes` directory of BkTask.
 For instance, let's assume that you have a `Libraries` directory at the same level of your `.xcodeproj` where you store all your external libraries. In that case, the header to indicate would be `$(SRCROOT)/Librairies/BkTask/Classes`.  
-![Add BkTask headers to your Header Search Paths](/Images/BkTask_3.jpg "Add BkTask headers to your Header Search Paths")  
+![Add BkTask headers to your Header Search Paths](http://git.backelite.com/raw/?f=Images/BkTask_3.jpg&r=backelite/BkTask.git "Add BkTask headers to your Header Search Paths")  
 
 __To make this step even easier, support for cocoapods is coming soon.__
 
