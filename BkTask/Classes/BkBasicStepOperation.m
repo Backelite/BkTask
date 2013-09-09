@@ -24,6 +24,8 @@
 #import "BkBasicStepOperation.h"
 #import "BkTaskContent.h"
 
+NSString * const kBKTaskErrorDomain = @"com.backelite.bktask.ErrorDomain";
+
 @interface BkBasicStepOperation ()
 
 @property (strong) NSError *error;
@@ -67,7 +69,8 @@
     id output = [self processInput:input error:&theError];
     if (nil == output) {
         if (theError == nil) {
-            theError = [NSError errorWithDomain:@"com.bktask.unknown" code:0 userInfo:nil]; // to improve
+            //Error should be improved with specific error code
+            theError = [NSError errorWithDomain:kBKTaskErrorDomain code:0 userInfo:nil];
         }
         self.error = theError;
     } else {

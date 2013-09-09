@@ -24,6 +24,8 @@
 #import <Foundation/Foundation.h>
 #import "BkTask.h"
 
+extern NSString * const kBKTaskErrorDomain;
+
 /**
  * Basic implementation of BkTaskStep.
  * BkBasicStepOperation is abstact and meant to be subclassed.
