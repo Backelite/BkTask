@@ -21,22 +21,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BkFileSavingOperation.h"
-#import "BkTaskContent.h"
-#import "BkLog.h"
+#import "BKTFileLoadingOperation.h"
+#import "BKTTaskContent.h"
 
-@interface BkFileSavingOperation ()
-
-@end
-
-@implementation BkFileSavingOperation
-@synthesize fileURL;
+@implementation BKTFileLoadingOperation
 
 #pragma mark - Life Cycle
 
-+ (id)saveOperationWithFile:(NSURL *)fileURL
++ (id)loadOperationWithFile:(NSURL *)fileURL
 {
-    BkFileSavingOperation *ope = [self new];
+    BKTFileLoadingOperation *ope = [self new];
     ope.fileURL = fileURL;
     return ope;
 }
@@ -45,8 +39,8 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    BkFileSavingOperation *copy = [super copyWithZone:zone];
-    copy->fileURL = [fileURL copy];
+    BKTFileLoadingOperation *copy = [super copyWithZone:zone];
+    copy->_fileURL = [_fileURL copy];
     return copy;
 }
 
@@ -66,20 +60,7 @@
 
 - (id) processInput:(id)theInput error:(NSError **)error
 {
-    NSFileManager *manager = [NSFileManager defaultManager];
-    NSURL *dirURL = [fileURL URLByDeletingLastPathComponent];
-    if (NO == [manager fileExistsAtPath:[dirURL path]]) {
-        if (NO == [manager createDirectoryAtPath:dirURL.path withIntermediateDirectories:YES attributes:nil error:error]) {
-            BKLogE(@"error creating dir at URL('%@'): %@", dirURL, *error);
-            //TODO: error handling
-        }
-    }
-    NSData *data = theInput;
-    if (NO == [data writeToURL:fileURL options:NSDataWritingAtomic error:error]) {
-        BKLogE(@"error writing data to URL('%@'): %@", fileURL, *error);
-        //TODO: error handling
-    }
-    return theInput;
+    NSData *fileContent = [NSData dataWithContentsOfURL:_fileURL options:self.readingOptions error:error];
+    return fileContent;
 }
-
 @end

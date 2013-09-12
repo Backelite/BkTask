@@ -21,28 +21,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BkTask+BkNetwork.h"
+#import "BKTJSONParsingOperation.h"
+#import "BKTTaskContent.h"
 
-#import "BkURLRequestOperation.h"
-#import "BkJSONParsingOperation.h"
+@implementation BKTJSONParsingOperation
 
-@implementation BkTask (BkNetwork)
+#pragma mark -
 
-+ (id) taskWithRequest:(NSURLRequest *)aRequest
+- (NSString *)inputKey
 {
-    BkTask *newtask = [BkTask new];
-    BkURLRequestOperation *reqOp = [[BkURLRequestOperation alloc] initWithRequest:aRequest];
-    [newtask addStep:reqOp];
-    return newtask;
+    return BkTaskContentBodyData;
 }
 
-+ (id) taskWithJSONRequest:(NSURLRequest *)aRequest
+- (NSString *)outputKey
 {
-    BkTask *task = [self taskWithRequest:aRequest];
-    BkJSONParsingOperation *jsonOp = [BkJSONParsingOperation new];
-    [task addStep:jsonOp];
-    return task;
+    return BkTaskContentBodyObject;
 }
 
+#pragma mark -
+
+- (id) processInput:(id)theInput error:(NSError **)error
+{
+    id jsonObject = nil;
+    NSData *data = theInput;
+    if (nil != data) {
+        jsonObject = [NSJSONSerialization JSONObjectWithData:data options:self.jsonOptions error:error];
+    }
+    return jsonObject;
+}
 
 @end

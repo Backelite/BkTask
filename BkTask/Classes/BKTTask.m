@@ -21,12 +21,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BkTask.h"
+#import "BKTTask.h"
 
-#import "BkAssert.h"
-#import "BkTaskContent.h"
-#import "BkLog.h"
-#import "BkMisc.h"
+#import "BKTAssert.h"
+#import "BKTTaskContent.h"
+#import "BKTMisc.h"
 
 //@class BkTaskStepBuilder;
 //typedef id BkTaskStep; // NSArray, NSDictionary or BkStepOperation
@@ -40,23 +39,23 @@ typedef enum BkTaskTarget {
     BkTaskTargetFailure,
 } BkTaskTarget;
 
-@interface BkTask ()
+@interface BKTTask ()
 
 @property BOOL isExecuting;
 @property BOOL isFinished;
 @property BOOL isCancelled;
 
-@property (strong, nonatomic) BkTaskContent *content;
+@property (strong, nonatomic) BKTTaskContent *content;
 @property (strong, nonatomic) NSError *error;
 @property (strong, nonatomic) NSMutableArray *completionHandlers;
 @property (strong, nonatomic) NSMutableArray *failureHandlers;
 @property (strong, nonatomic) NSMutableSet *currentSteps; // for now should contain 0 or 1 object
-@property (strong, nonatomic) BkStepOperation *lastStep;
+@property (strong, nonatomic) BKTStepOperation *lastStep;
 
 //- (BkStepOperation *)realStepForStep:(id)step;
-- (void) startStep:(BkStepOperation *)aStep withInput:(BkTaskContent *)content;
-- (void) stepDidFinish:(BkStepOperation *)aStep;
-- (NSError *) step:(BkStepOperation *)aStep didFailWithError:(NSError *)error;
+- (void) startStep:(BKTStepOperation *)aStep withInput:(BKTTaskContent *)content;
+- (void) stepDidFinish:(BKTStepOperation *)aStep;
+- (NSError *) step:(BKTStepOperation *)aStep didFailWithError:(NSError *)error;
 
 - (void) finishAndInvokeTargets:(BkTaskTarget)targetType;
 - (void) invokeTargetsForSuccess;
@@ -67,13 +66,13 @@ typedef enum BkTaskTarget {
 @end
 
 @interface BkTaskTargetInvocation : NSObject
-+ (id) invocationWithTarget:(id)target completion:(BkTaskCompletion)completion;
++ (id) invocationWithTarget:(id)target completion:(BKTTaskCompletion)completion;
 + (id) invocationWithTarget:(id)target selector:(SEL)selector;
 @property (nonatomic, unsafe_unretained) id target;
-- (void)invokeWithTask:(BkTask *)tr output:(id)output;
+- (void)invokeWithTask:(BKTTask *)tr output:(id)output;
 @end
 
-@implementation BkTask {
+@implementation BKTTask {
     NSMutableSet *steps;
 }
 
@@ -111,10 +110,10 @@ typedef enum BkTaskTarget {
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    BkTask *copy = [[[self class] allocWithZone:zone] init];
-    for (BkStepOperation *step in steps) {
+    BKTTask *copy = [[[self class] allocWithZone:zone] init];
+    for (BKTStepOperation *step in steps) {
         BkSimpleAssert([step conformsToProtocol:@protocol(NSCopying)]);
-        BkStepOperation *stepCopy = [step copyWithZone:zone];
+        BKTStepOperation *stepCopy = [step copyWithZone:zone];
         [copy addStep:stepCopy];
     }
     copy->completionHandlers = [completionHandlers copyWithZone:zone];
@@ -136,16 +135,16 @@ static NSString *stringFromBool(BOOL yesorno)
 
 #pragma mark - Steps
 
-- (void) addStep:(BkStepOperation *)aStep
+- (void) addStep:(BKTStepOperation *)aStep
 {
     [self insertStep:aStep afterStep:lastStep];
 }
 
-- (void) insertStep:(BkStepOperation *)aStep afterStep:(BkStepOperation *)previousStep
+- (void) insertStep:(BKTStepOperation *)aStep afterStep:(BKTStepOperation *)previousStep
 {
     NSAssert(aStep.task == nil, @"The step being added (%@) is already assigned to a task (%@)", aStep, aStep.task);
     BkSimpleAssert(previousStep == nil || previousStep.task == self);
-    BkStepOperation *nextStep = (previousStep == nil ? initialStep : previousStep.nextStep);
+    BKTStepOperation *nextStep = (previousStep == nil ? initialStep : previousStep.nextStep);
     if (nextStep != nil) {
         NSAssert(nextStep.isExecuting == NO, @"The step being added is followed by a step already running and consequantly won't ever be run");
         NSAssert(nextStep.isFinished == NO, @"The step being added is followed by a step already finished and consequantly won't ever be run");
@@ -166,7 +165,7 @@ static NSString *stringFromBool(BOOL yesorno)
     }
 }
 
-- (void) insertStep:(BkStepOperation *)aStep beforeStep:(BkStepOperation *)nextStep
+- (void) insertStep:(BKTStepOperation *)aStep beforeStep:(BKTStepOperation *)nextStep
 {
     BkSimpleAssert(nextStep == nil || nextStep.task == self);
     if (nil == nextStep) {
@@ -177,13 +176,13 @@ static NSString *stringFromBool(BOOL yesorno)
 }
 
 // not yet public
-- (void) removeStep:(BkStepOperation *)aStep andFollowing:(BOOL)chainRemoval
+- (void) removeStep:(BKTStepOperation *)aStep andFollowing:(BOOL)chainRemoval
 {
     NSAssert(aStep.task == self, @"The step being removed (%@) is not assigned to this task (%@ instead of %@)", aStep, aStep.task, self);
     NSAssert(aStep.isExecuting == NO, @"The step being removed is already running");
     NSAssert(aStep.isFinished == NO, @"The step being removed is already");
-    BkStepOperation *previousStep = aStep.previousStep;
-    BkStepOperation *nextStep = (chainRemoval ? nil : aStep.nextStep);
+    BKTStepOperation *previousStep = aStep.previousStep;
+    BKTStepOperation *nextStep = (chainRemoval ? nil : aStep.nextStep);
     previousStep.nextStep = nextStep;
     nextStep.previousStep = previousStep;
     
@@ -240,7 +239,7 @@ static NSString *stringFromBool(BOOL yesorno)
 
 #pragma mark * Completion
 
-- (void) addTarget:(id)target completion:(BkTaskCompletion)completion
+- (void) addTarget:(id)target completion:(BKTTaskCompletion)completion
 {
     [self addTargetInvocation:[BkTaskTargetInvocation invocationWithTarget:target completion:completion]
                    inHandlers:completionHandlers];
@@ -265,7 +264,7 @@ static NSString *stringFromBool(BOOL yesorno)
 
 #pragma mark * Failure
 
-- (void)addTarget:(id)target failure:(BkTaskFailure)failureBlock
+- (void)addTarget:(id)target failure:(BKTTaskFailure)failureBlock
 {
     [self addTargetInvocation:[BkTaskTargetInvocation invocationWithTarget:target completion:failureBlock]
                    inHandlers:failureHandlers];
@@ -286,7 +285,7 @@ static NSString *stringFromBool(BOOL yesorno)
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if (context == &kvoContextStepIsFinished) {
-        BkStepOperation *step = object;
+        BKTStepOperation *step = object;
         if ([step valueForKey:@"isFinished"]) {
             [self stepDidFinish:step];
         }
@@ -319,9 +318,9 @@ static NSString *stringFromBool(BOOL yesorno)
     [self.currentSteps makeObjectsPerformSelector:@selector(cancel)];
 }
 
-- (void)startStep:(BkStepOperation *)aStep withInput:(BkTaskContent *)inputContent
+- (void)startStep:(BKTStepOperation *)aStep withInput:(BKTTaskContent *)inputContent
 {
-    BkTaskContent *newContent = (inputContent == nil ? [BkTaskContent new] : [inputContent copy]);
+    BKTTaskContent *newContent = (inputContent == nil ? [BKTTaskContent new] : [inputContent copy]);
     [aStep setContent:newContent];
     [currentSteps addObject:aStep];
     [aStep addObserver:self forKeyPath:@"isFinished" options:0 context:&kvoContextStepIsFinished];
@@ -335,7 +334,7 @@ static NSString *stringFromBool(BOOL yesorno)
     [queue addOperation:aStep];
 }
 
-- (void)stepDidFinish:(NSOperation<BkTaskStep> *)aStep
+- (void)stepDidFinish:(NSOperation<BKTTaskStep> *)aStep
 {
     if (aStep.isCancelled) {
         self.isCancelled = YES;
@@ -343,7 +342,7 @@ static NSString *stringFromBool(BOOL yesorno)
     BkSimpleAssert([currentSteps containsObject:aStep]);
     [aStep removeObserver:self forKeyPath:@"isFinished"];
     [currentSteps removeObject:aStep];
-    BkTaskContent *stepOutput = [aStep content];
+    BKTTaskContent *stepOutput = [aStep content];
     NSError *anError = [aStep error];
     self.content = stepOutput;
     
@@ -353,7 +352,7 @@ static NSString *stringFromBool(BOOL yesorno)
     } else if (isCancelled) {
         [self finishAndInvokeTargets:BkTaskTargetNone];
     } else {
-        BkStepOperation * nextStep;
+        BKTStepOperation * nextStep;
         nextStep = [aStep nextStep];
         if (nil == nextStep) {
             [self finishAndInvokeTargets:BkTaskTargetSuccess];
@@ -363,7 +362,7 @@ static NSString *stringFromBool(BOOL yesorno)
     }
 }
 
-- (NSError *)step:(id<BkTaskStep>)aStep didFailWithError:(NSError *)anError
+- (NSError *)step:(id<BKTTaskStep>)aStep didFailWithError:(NSError *)anError
 {
     //    BKLogE(@"In some task (%@), some step (%@) failed awfully (%@)", self, aStep, anError);
     return anError;
@@ -422,14 +421,14 @@ static NSString *stringFromBool(BOOL yesorno)
 @end
 
 @interface BkTaskTargetInvocationBlock : BkTaskTargetInvocation
-@property (nonatomic, copy) BkTaskCompletion block;
+@property (nonatomic, copy) BKTTaskCompletion block;
 @end
 
 
 
 @implementation BkTaskTargetInvocation
 @synthesize target;
-+ (id) invocationWithTarget:(id)target completion:(BkTaskCompletion)completion
++ (id) invocationWithTarget:(id)target completion:(BKTTaskCompletion)completion
 {
     NSParameterAssert(target != nil);
     NSParameterAssert(completion != nil);
@@ -447,7 +446,7 @@ static NSString *stringFromBool(BOOL yesorno)
     b.selector = selector;
     return b;
 }
-- (void)invokeWithTask:(BkTask *)tr output:(id)output
+- (void)invokeWithTask:(BKTTask *)tr output:(id)output
 {
     [self doesNotRecognizeSelector:_cmd];
 }
@@ -455,12 +454,12 @@ static NSString *stringFromBool(BOOL yesorno)
 
 @implementation BkTaskTargetInvocationSelector
 @synthesize selector;
-- (void)invokeWithTask:(BkTask *)t output:(id)output
+- (void)invokeWithTask:(BKTTask *)t output:(id)output
 {
     NSInvocation *invoc = [NSInvocation invocationWithMethodSignature:[self.target methodSignatureForSelector:selector]];
     [invoc setTarget:self.target];
     [invoc setSelector:selector];
-    __unsafe_unretained BkTask *tempTask = t;
+    __unsafe_unretained BKTTask *tempTask = t;
     [invoc setArgument:&tempTask atIndex:2];
     
     __unsafe_unretained id tempOutput = output;
@@ -472,7 +471,7 @@ static NSString *stringFromBool(BOOL yesorno)
 @implementation BkTaskTargetInvocationBlock
 @synthesize block;
 
-- (void)invokeWithTask:(BkTask *)t output:(id)output
+- (void)invokeWithTask:(BKTTask *)t output:(id)output
 {
     block(t, output);
 }

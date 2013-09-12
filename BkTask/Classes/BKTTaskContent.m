@@ -22,12 +22,12 @@
 // THE SOFTWARE.
 
 #import <objc/runtime.h>
-#import "BkTaskContent.h"
+#import "BKTTaskContent.h"
 
 NSString * const BkTaskContentBodyData = @"bodyData";
 NSString * const BkTaskContentBodyObject = @"bodyObject";
 
-@implementation BkTaskContent {
+@implementation BKTTaskContent {
     NSMutableDictionary *values;
 }
 @dynamic bodyData;
@@ -43,7 +43,7 @@ NSString * const BkTaskContentBodyObject = @"bodyObject";
     return self;
 }
 
-- (id) initWithContent:(BkTaskContent *)content
+- (id) initWithContent:(BKTTaskContent *)content
 {
     if ((self = [super init])) {
         values = [content->values mutableCopy];
@@ -53,7 +53,7 @@ NSString * const BkTaskContentBodyObject = @"bodyObject";
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    BkTaskContent *copy = [[[self class] allocWithZone:zone] initWithContent:self];
+    BKTTaskContent *copy = [[[self class] allocWithZone:zone] initWithContent:self];
     return copy;
 }
 

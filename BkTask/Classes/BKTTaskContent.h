@@ -22,25 +22,49 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "BkBasicStepOperation.h"
 
 /**
- *  The BkFileSavingOperation class is an implementation of BkBasicStepOperation used to save file on disk.
+ *  The BkTYaskContent class is intented to represent the content exchanged between the steps.
  */
-@interface BkFileSavingOperation : BkBasicStepOperation
+@interface BKTTaskContent : NSObject <NSCopying>
 
 /**
- *  Destination URL for saving input as a file.
- */
-@property (nonatomic, copy) NSURL *fileURL;
-
-/**
- *  Helper method to create a file saving step with an URL.
+ *  Returns the value associated with a given key.
  *
- *  @param fileURL The destination URL to save file.
+ *  @param key The key for which to return the corresponding value.
  *
- *  @return A file saving step ready to be added to a task.
+ *  @return The value associated with \ref key.
  */
-+ (id) saveOperationWithFile:(NSURL *)fileURL;
+- (id) contentValueForKey:(NSString *)key;
+
+/**
+ *  Add an additionnal value with a key to make it available to multiple steps.
+ *
+ *  @param value An additionnal value. Cannot be nil.
+ *  @param key   The key for \ref value. Uses key value coding.
+ */
+- (void) setContentValue:(id)value forKey:(NSString *)key;
+
+/**
+ *  Content to process for task with input key of type BkTaskContentBodyData
+ */
+@property (nonatomic, copy) NSData *bodyData;
+
+
+/**
+ *  Content to process for task with input key of type BkTaskContentBodyObject
+ */
+@property (nonatomic, strong) id bodyObject;
 
 @end
+
+/**
+ *  Constant use to define content type as NSData
+ */
+extern NSString * const BkTaskContentBodyData;
+
+/**
+ *  Constant use to define content type as NSObject or subclasses
+ */
+extern NSString * const BkTaskContentBodyObject;
+

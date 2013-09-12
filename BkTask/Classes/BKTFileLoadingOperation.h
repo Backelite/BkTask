@@ -21,50 +21,32 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "BKTTask.h"
+#import "BKTBasicStepOperation.h"
 
 /**
- *  The BkTYaskContent class is intented to represent the content exchanged between the steps.
+ *  The BkFileLoadingOperation class is an implementation of BkBasicStepOperation used to load a file from disk.
+ *  This step is intented to be used as a first step.
  */
-@interface BkTaskContent : NSObject <NSCopying>
+@interface BKTFileLoadingOperation : BKTBasicStepOperation
 
 /**
- *  Returns the value associated with a given key.
+ *  Source URL for loading the file from disk
+ */
+@property (nonatomic, copy) NSURL *fileURL;
+
+/**
+ *  Reading options when loading file. Default value is 0.
+ */
+@property (nonatomic, assign) NSDataReadingOptions readingOptions;
+
+/**
+ *  Helper method to create a file loading step with an URL
  *
- *  @param key The key for which to return the corresponding value.
+ *  @param fileURL The source URL to load file.
  *
- *  @return The value associated with \ref key.
+ *  @return A file loading step ready to be added to a task.
  */
-- (id) contentValueForKey:(NSString *)key;
-
-/**
- *  Add an additionnal value with a key to make it available to multiple steps.
- *
- *  @param value An additionnal value. Cannot be nil.
- *  @param key   The key for \ref value. Uses key value coding.
- */
-- (void) setContentValue:(id)value forKey:(NSString *)key;
-
-/**
- *  Content to process for task with input key of type BkTaskContentBodyData
- */
-@property (nonatomic, copy) NSData *bodyData;
-
-
-/**
- *  Content to process for task with input key of type BkTaskContentBodyObject
- */
-@property (nonatomic, strong) id bodyObject;
++ (id) loadOperationWithFile:(NSURL *)fileURL;
 
 @end
-
-/**
- *  Constant use to define content type as NSData
- */
-extern NSString * const BkTaskContentBodyData;
-
-/**
- *  Constant use to define content type as NSObject or subclasses
- */
-extern NSString * const BkTaskContentBodyObject;
-

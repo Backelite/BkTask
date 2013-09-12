@@ -23,12 +23,12 @@
 
 #import <Foundation/Foundation.h>
 
-@class BkTask;
-@class BkTaskContent;
-@protocol BkTaskStep;
-typedef NSOperation <BkTaskStep> BkStepOperation;
-typedef void (^BkTaskCompletion)(BkTask *task, id output);
-typedef void (^BkTaskFailure)(BkTask *task, NSError *error);
+@class BKTTask;
+@class BKTTaskContent;
+@protocol BKTTaskStep;
+typedef NSOperation <BKTTaskStep> BKTStepOperation;
+typedef void (^BKTTaskCompletion)(BKTTask *task, id output);
+typedef void (^BKTTaskFailure)(BKTTask *task, NSError *error);
 
 /**
  * Asynchronous task group.
@@ -38,10 +38,10 @@ typedef void (^BkTaskFailure)(BkTask *task, NSError *error);
  * @ingroup Task
  * @see BkTask, BkURLRequestOperation (in BkNetwork), BkTask(BkURLRequestOperation) (in BkNetwork)
  */
-@interface BkTask : NSObject <NSCopying>
+@interface BKTTask : NSObject <NSCopying>
 
-@property (strong, nonatomic) BkStepOperation *initialStep;
-@property (strong, nonatomic, readonly) BkTaskContent *content;
+@property (strong, nonatomic) BKTStepOperation *initialStep;
+@property (strong, nonatomic, readonly) BKTTaskContent *content;
 
 /**
  *  Application defined value that can be used to identify a task.
@@ -75,7 +75,7 @@ typedef void (^BkTaskFailure)(BkTask *task, NSError *error);
  *
  *  @param aStep The step to add.
  */
-- (void) addStep:(BkStepOperation *)aStep;
+- (void) addStep:(BKTStepOperation *)aStep;
 
 /**
  *  Adds a new step to receiver after another one.
@@ -84,7 +84,7 @@ typedef void (^BkTaskFailure)(BkTask *task, NSError *error);
  *  @param previousStep Reference to the step after which the new step will be added.
  *  @discussion Call with previousStep set to nil to add it as the first step.
  */
-- (void) insertStep:(BkStepOperation *)aStep afterStep:(BkStepOperation *)previousStep;
+- (void) insertStep:(BKTStepOperation *)aStep afterStep:(BKTStepOperation *)previousStep;
 
 /**
  *  Adds a step before another one. Raises an exception if nextStep is already running.
@@ -92,7 +92,7 @@ typedef void (^BkTaskFailure)(BkTask *task, NSError *error);
  *  @param aStep    The step to add.
  *  @param nextStep Reference to the step before which the new step will be added.
  */
-- (void) insertStep:(BkStepOperation *)aStep beforeStep:(BkStepOperation *)nextStep;
+- (void) insertStep:(BKTStepOperation *)aStep beforeStep:(BKTStepOperation *)nextStep;
 
 
 /**
@@ -102,7 +102,7 @@ typedef void (^BkTaskFailure)(BkTask *task, NSError *error);
  *  @param completionBlock A block called when the task is finished.
  *  @see \ref removeTargetCompletions:
  */
-- (void) addTarget:(id)target completion:(BkTaskCompletion)completionBlock;
+- (void) addTarget:(id)target completion:(BKTTaskCompletion)completionBlock;
 
 /**
  *  Removes all completion blocks related to a target. If all completion blocks are removed, the task is automatically canceled.
@@ -119,7 +119,7 @@ typedef void (^BkTaskFailure)(BkTask *task, NSError *error);
  *  @param failureBlock A block called when the task fails to complete.
  *  @see \ref removeTargetFailures:
  */
-- (void) addTarget:(id)target failure:(BkTaskFailure)failureBlock;
+- (void) addTarget:(id)target failure:(BKTTaskFailure)failureBlock;
 
 /**
  *  Removes the failure handlers registered for target.
@@ -143,29 +143,29 @@ typedef void (^BkTaskFailure)(BkTask *task, NSError *error);
 
 @end
 
-@protocol BkTaskStep <NSObject, NSCopying>
+@protocol BKTTaskStep <NSObject, NSCopying>
 
 @required
 
 /**
  *  The setter must be used exclusively by the owning task
  */
-@property (unsafe_unretained, nonatomic) BkTask *task;
+@property (unsafe_unretained, nonatomic) BKTTask *task;
 
 /**
  *  The setter must be used exclusively by the owning task
  */
-@property (unsafe_unretained, nonatomic) BkStepOperation *previousStep;
+@property (unsafe_unretained, nonatomic) BKTStepOperation *previousStep;
 
 /**
  *  The setter must be used exclusively by the owning task
  */
-@property (unsafe_unretained, nonatomic) BkStepOperation *nextStep;
+@property (unsafe_unretained, nonatomic) BKTStepOperation *nextStep;
 
 /**
  *  The content to be processed by the step
  */
-@property (strong, nonatomic) BkTaskContent *content;
+@property (strong, nonatomic) BKTTaskContent *content;
 
 /**
  *  Getter for the step error object. When error is different from nil, the task will fail and call the failure block.

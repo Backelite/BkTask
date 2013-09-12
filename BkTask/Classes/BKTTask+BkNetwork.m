@@ -21,16 +21,28 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-//Task
-#import "BKTTask.h"
-#import "BKTTaskObserver.h"
-#import "BKTTaskContent.h"
 #import "BKTTask+BkNetwork.h"
 
-//Steps
-#import "BKTBasicStepOperation.h"
-#import "BKTBlockStepOperation.h"
-#import "BKTFileSavingOperation.h"
-#import "BKTFileLoadingOperation.h"
 #import "BKTURLRequestOperation.h"
 #import "BKTJSONParsingOperation.h"
+
+@implementation BKTTask (BkNetwork)
+
++ (id) taskWithRequest:(NSURLRequest *)aRequest
+{
+    BKTTask *newtask = [BKTTask new];
+    BKTURLRequestOperation *reqOp = [[BKTURLRequestOperation alloc] initWithRequest:aRequest];
+    [newtask addStep:reqOp];
+    return newtask;
+}
+
++ (id) taskWithJSONRequest:(NSURLRequest *)aRequest
+{
+    BKTTask *task = [self taskWithRequest:aRequest];
+    BKTJSONParsingOperation *jsonOp = [BKTJSONParsingOperation new];
+    [task addStep:jsonOp];
+    return task;
+}
+
+
+@end

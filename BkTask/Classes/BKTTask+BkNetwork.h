@@ -21,9 +21,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BkTask.h"
+#import "BKTTask.h"
 
-@interface BkTask (BkNetwork)
+@interface BKTTask (BkNetwork)
 
 /**
  *  Create a task to execute the request and download the content. It adds an BkURLRequestOperation initialized with 'aRequest' as first step.

@@ -21,18 +21,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BkBasicStepOperation.h"
-#import "BkTaskContent.h"
+#import "BKTBasicStepOperation.h"
+#import "BKTTaskContent.h"
 
 NSString * const kBKTaskErrorDomain = @"com.backelite.bktask.ErrorDomain";
 
-@interface BkBasicStepOperation ()
+@interface BKTBasicStepOperation ()
 
 @property (strong) NSError *error;
 
 @end
 
-@implementation BkBasicStepOperation
+@implementation BKTBasicStepOperation
 @synthesize content;
 @synthesize error;
 @synthesize nextStep;
@@ -53,7 +53,7 @@ NSString * const kBKTaskErrorDomain = @"com.backelite.bktask.ErrorDomain";
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    BkBasicStepOperation *copy = [[[self class] allocWithZone:zone] init];
+    BKTBasicStepOperation *copy = [[[self class] allocWithZone:zone] init];
     return copy;
 }
 

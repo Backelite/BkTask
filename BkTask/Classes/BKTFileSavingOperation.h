@@ -21,16 +21,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BkBasicStepOperation.h"
+#import <Foundation/Foundation.h>
+#import "BKTBasicStepOperation.h"
 
 /**
- *  A JSON parsing step using NSJSONSerialization.
+ *  The BkFileSavingOperation class is an implementation of BkBasicStepOperation used to save file on disk.
  */
-@interface BkJSONParsingOperation : BkBasicStepOperation
+@interface BKTFileSavingOperation : BKTBasicStepOperation
 
 /**
- *  Options to pass to the JSON parser. Default value is 0.
+ *  Destination URL for saving input as a file.
  */
-@property (nonatomic, assign) NSJSONReadingOptions jsonOptions;
+@property (nonatomic, copy) NSURL *fileURL;
+
+/**
+ *  Helper method to create a file saving step with an URL.
+ *
+ *  @param fileURL The destination URL to save file.
+ *
+ *  @return A file saving step ready to be added to a task.
+ */
++ (id) saveOperationWithFile:(NSURL *)fileURL;
 
 @end

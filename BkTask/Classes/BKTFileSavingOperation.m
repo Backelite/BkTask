@@ -21,11 +21,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BkJSONParsingOperation.h"
-#import "BkTaskContent.h"
-#import "BkLog.h"
+#import "BKTFileSavingOperation.h"
+#import "BKTTaskContent.h"
 
-@implementation BkJSONParsingOperation
+@interface BKTFileSavingOperation ()
+
+@end
+
+@implementation BKTFileSavingOperation
+@synthesize fileURL;
+
+#pragma mark - Life Cycle
+
++ (id)saveOperationWithFile:(NSURL *)fileURL
+{
+    BKTFileSavingOperation *ope = [self new];
+    ope.fileURL = fileURL;
+    return ope;
+}
+
+#pragma mark - Copy
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    BKTFileSavingOperation *copy = [super copyWithZone:zone];
+    copy->fileURL = [fileURL copy];
+    return copy;
+}
 
 #pragma mark -
 
@@ -36,26 +58,27 @@
 
 - (NSString *)outputKey
 {
-    return BkTaskContentBodyObject;
+    return BkTaskContentBodyData;
 }
 
 #pragma mark -
 
 - (id) processInput:(id)theInput error:(NSError **)error
 {
-    id jsonObject = nil;
-    NSData *data = theInput;
-    if (nil != data) {
-        jsonObject = [NSJSONSerialization JSONObjectWithData:data options:self.jsonOptions error:error];
-        if (jsonObject == nil) {
-#ifdef DEBUG
-            //An error has occured, so we print JSON string to help debugging
-            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            BKLogE(@"invalid as json:\n%@", string);
-#endif
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSURL *dirURL = [fileURL URLByDeletingLastPathComponent];
+    if (NO == [manager fileExistsAtPath:[dirURL path]]) {
+        if (NO == [manager createDirectoryAtPath:dirURL.path withIntermediateDirectories:YES attributes:nil error:error]) {
+            //NSLog(@"error creating dir at URL('%@'): %@", dirURL, *error);
+            //TODO: error handling
         }
     }
-    return jsonObject;
+    NSData *data = theInput;
+    if (NO == [data writeToURL:fileURL options:NSDataWritingAtomic error:error]) {
+        //NSLog(@"error writing data to URL('%@'): %@", fileURL, *error);
+        //TODO: error handling
+    }
+    return theInput;
 }
 
 @end

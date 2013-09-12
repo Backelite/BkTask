@@ -21,25 +21,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BkTaskObserver.h"
-
-#import "BkLog.h"
-#import "BkTask.h"
+#import "BKTTaskObserver.h"
+#import "BKTTask.h"
 
 
 static char taskIsFinishedValueObservingContext = 0;
 static NSString *taskIsFinishedKeyPath = @"isFinished";
 
-@interface BkTaskObserver ()
+@interface BKTTaskObserver ()
 
-- (void) addObserverOnTask:(BkTask *)aTask;
-- (void) removeObserverFromTask:(BkTask *)aTask;
-- (void) observeValueForIsFinished:(BOOL)isFinished ofTask:(BkTask *)aTask;
+- (void) addObserverOnTask:(BKTTask *)aTask;
+- (void) removeObserverFromTask:(BKTTask *)aTask;
+- (void) observeValueForIsFinished:(BOOL)isFinished ofTask:(BKTTask *)aTask;
 
 @end
 
 
-@implementation BkTaskObserver {
+@implementation BKTTaskObserver {
     NSMutableSet *_observedTasks;
 }
 @synthesize delegate = _delegate;
@@ -48,7 +46,7 @@ static NSString *taskIsFinishedKeyPath = @"isFinished";
 
 - (void) dealloc 
 {
-    for (BkTask *aTask in _observedTasks) {
+    for (BKTTask *aTask in _observedTasks) {
         [self removeObserverFromTask:aTask];
     }
 
@@ -82,26 +80,25 @@ static NSString *taskIsFinishedKeyPath = @"isFinished";
 
 #pragma mark - Observation
 
-- (void) addObserverOnTask:(BkTask *)aTask
+- (void) addObserverOnTask:(BKTTask *)aTask
 {
     [aTask addObserver:self forKeyPath:taskIsFinishedKeyPath options:NSKeyValueObservingOptionNew context:&taskIsFinishedValueObservingContext];
 }
 
-- (void) removeObserverFromTask:(BkTask *)aTask
+- (void) removeObserverFromTask:(BKTTask *)aTask
 {
     [aTask removeObserver:self forKeyPath:taskIsFinishedKeyPath];
 }
 
-- (void) observeValueForIsFinished:(BOOL)isFinished ofTask:(BkTask *)aTask
+- (void) observeValueForIsFinished:(BOOL)isFinished ofTask:(BKTTask *)aTask
 {
     if (isFinished) {
-//        BKLogD(@"task <%p> is finished", aTask);
         //TODO: call delegate
         [self stopObservingTask:aTask];
     }
 }
 
-- (void) observeTask:(BkTask *)aTask
+- (void) observeTask:(BKTTask *)aTask
 {
     if (NO == [_observedTasks containsObject:aTask]) {
         [_observedTasks addObject:aTask];
@@ -109,7 +106,7 @@ static NSString *taskIsFinishedKeyPath = @"isFinished";
     }
 }
 
-- (void) stopObservingTask:(BkTask *)aTask
+- (void) stopObservingTask:(BKTTask *)aTask
 {
     if ([_observedTasks containsObject:aTask]) {
         [self removeObserverFromTask:aTask];

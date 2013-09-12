@@ -22,37 +22,55 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "BkTask.h"
 
-extern NSString * const kBKTaskErrorDomain;
+@class BKTTask;
+@protocol BKTTaskObserverDelegate;
 
 /**
- * Basic implementation of BkTaskStep.
- * BkBasicStepOperation is abstact and meant to be subclassed.
+ *  The BKTTaskObserver is an object defined to monitor the progress of a task as KVO monitor can changes in properties. 
+ *  Currently it is only allowed to be notified when a task complete is this class is intented to be improved in the future.
  */
-@interface BkBasicStepOperation : NSOperation <BkTaskStep>
+@interface BKTTaskObserver : NSObject
 
 /**
- * Abstract method meant to be overridden by the most basic subclasses to perform its task
- * @discussion Returning nil will cause the task to fail. If your step have no output, simply return [NSNull null].
+ *  The object to notify when task state changes.
  */
-- (id) processInput:(id)theInput error:(NSError **)error;
-
+@property (unsafe_unretained, nonatomic) id <BKTTaskObserverDelegate> delegate;
 
 /**
- *  Abstract method. See BkTaskContent for possible values.
+ *  Add an observer for a task.
  *
- *  @return The input key.
- *  @see \ref BkTaskContent.
+ *  @param aTask The task to observe.
  */
-- (NSString *) inputKey;
+- (void) observeTask:(BKTTask *)aTask;
 
 /**
- *  Abstract method. See BkTaskContent for possible values.
+ *  Stopping task observation. Note that BKTTaskObserver will automatically stop observing finished tasks.
  *
- *  @return The output key.
- *  @see \ref BkTaskContent.
+ *  @param aTask The task to stop observing.
  */
-- (NSString *) outputKey;
+- (void) stopObservingTask:(BKTTask *)aTask;
+
+/**
+ *  Getter for observed tasks.
+ *
+ *  @return The list of observed tasks.
+ */
+- (id <NSFastEnumeration, NSCopying>) tasks;
+
+@end
+
+
+@protocol BKTTaskObserverDelegate <NSObject>
+
+@required
+
+/**
+ *  Sent to indicate that a task finished.
+ *
+ *  @param observer The object set as an observer.
+ *  @param task     The observed task.
+ */
+- (void) observer:(BKTTaskObserver *)observer taskDidFinish:(BKTTask *)task;
 
 @end

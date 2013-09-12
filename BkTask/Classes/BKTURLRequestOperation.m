@@ -21,14 +21,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BkURLRequestOperation.h"
-#import "BkJSONParsingOperation.h"
-#import "BkTaskContent.h"
+#import "BKTURLRequestOperation.h"
+#import "BKTJSONParsingOperation.h"
+#import "BKTTaskContent.h"
 
 //Categories
 #import "UIApplication+BkCore.h"
 
-@interface BkURLRequestOperation ()
+@interface BKTURLRequestOperation ()
 
 @property (strong) NSURLConnection *connection;
 @property (strong) NSMutableData *downloadedData;
@@ -42,7 +42,7 @@
 
 @end
 
-@implementation BkURLRequestOperation {
+@implementation BKTURLRequestOperation {
     BOOL isExecuting;
     BOOL isFinished;
     BOOL isCancelled;
@@ -242,7 +242,7 @@
 
 @end
 
-@implementation BkTaskContent (BkURLRequestOperation)
+@implementation BKTTaskContent (BkURLRequestOperation)
 
 static NSString * const urlResponseKey = @"urlResponse";
 

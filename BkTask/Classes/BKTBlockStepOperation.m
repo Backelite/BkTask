@@ -21,18 +21,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BkBlockStepOperation.h"
-#import "BkTaskContent.h"
+#import "BKTBlockStepOperation.h"
+#import "BKTTaskContent.h"
 
-@interface BkBlockStepOperation ()
+@interface BKTBlockStepOperation ()
 
-@property (copy, nonatomic) BkBlockStepOperationBlock block;
+@property (copy, nonatomic) BKTBlockStepOperationBlock block;
 @property (copy, nonatomic) NSString *inputKey;
 @property (copy, nonatomic) NSString *outputKey;
 
 @end
 
-@implementation BkBlockStepOperation {
+@implementation BKTBlockStepOperation {
     NSOperationQueue *_stepOperationQueue;
 }
 
@@ -42,21 +42,21 @@
 
 #pragma mark - Construction
 
-+ (id)blockOperationWithBlock:(BkBlockStepOperationBlock)workBlock
++ (id)blockOperationWithBlock:(BKTBlockStepOperationBlock)workBlock
 {
     return [self blockOperationWithInputKey:BkTaskContentBodyObject outputKey:BkTaskContentBodyObject block:workBlock];
 }
 
-+ (id)blockOperationWithQueue:(NSOperationQueue *)queue block:(BkBlockStepOperationBlock)workBlock
++ (id)blockOperationWithQueue:(NSOperationQueue *)queue block:(BKTBlockStepOperationBlock)workBlock
 {
     return [[self alloc] initWithInputKey:BkTaskContentBodyObject outputKey:BkTaskContentBodyObject queue:queue block:workBlock];
 }
-+ (id)blockOperationWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey block:(BkBlockStepOperationBlock)workBlock
++ (id)blockOperationWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey block:(BKTBlockStepOperationBlock)workBlock
 {
     return [[self alloc] initWithInputKey:inKey outputKey:outKey block:workBlock];
 }
 
-- (id)initWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey queue:(NSOperationQueue *)queue block:(BkBlockStepOperationBlock)workBlock
+- (id)initWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey queue:(NSOperationQueue *)queue block:(BKTBlockStepOperationBlock)workBlock
 {
     if ((self = [super init])) {
         NSParameterAssert(workBlock != nil);
@@ -68,7 +68,7 @@
     return self;
 }
 
-- (id)initWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey block:(BkBlockStepOperationBlock)workBlock
+- (id)initWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey block:(BKTBlockStepOperationBlock)workBlock
 {
     return [self initWithInputKey:inKey outputKey:outKey queue:nil block:workBlock];
 }
@@ -89,7 +89,7 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    BkBlockStepOperation *copy = [super copyWithZone:zone];
+    BKTBlockStepOperation *copy = [super copyWithZone:zone];
     copy.block = self.block;
     copy.inputKey = self.inputKey;
     copy.outputKey = self.outputKey;

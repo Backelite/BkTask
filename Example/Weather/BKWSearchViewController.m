@@ -21,7 +21,7 @@
 @interface BKWSearchViewController ()
 
 @property (strong, nonatomic) BKWCitySearch *citySearch;
-@property (strong, nonatomic) BkTask *searchTask;
+@property (strong, nonatomic) BKTTask *searchTask;
 
 @end
 
@@ -51,10 +51,10 @@
     // Creating task
     // We first create a task with steps to download and parse JSON data.
     // Then, we create a custom step to convert parsed data to a model object.
-    self.searchTask = [BkTask taskWithJSONRequest:searchRequest]; //  < Helper method to create a task with 2 steps for loading JSON and then parsing it.
+    self.searchTask = [BKTTask taskWithJSONRequest:searchRequest]; //  < Helper method to create a task with 2 steps for loading JSON and then parsing it.
     
     // Adding a custom step to transform parsed json dictionary to NSObject subclass
-    BkBlockStepOperation *modelConversionStep = [BkBlockStepOperation blockOperationWithBlock:^id(id input, NSError *__autoreleasing *error) {
+    BKTBlockStepOperation *modelConversionStep = [BKTBlockStepOperation blockOperationWithBlock:^id(id input, NSError *__autoreleasing *error) {
         if ([input isKindOfClass:[NSDictionary class]]) {
             BKWCitySearch *citySearch = [[BKWCitySearch alloc] initWithDictionary:input];
             return citySearch;
@@ -70,13 +70,13 @@
     
     __weak BKWSearchViewController *weakSelf = self; // We create a weak reference for self to avoid potential retain cycles with blocks
     
-    [self.searchTask addTarget:self completion:^(BkTask *task, id output) {
+    [self.searchTask addTarget:self completion:^(BKTTask *task, id output) {
         weakSelf.citySearch = output;
         [weakSelf.tableView reloadData];
     }];
     
     // Add a failure block.
-    [self.searchTask addTarget:self failure:^(BkTask *task, NSError *error) {
+    [self.searchTask addTarget:self failure:^(BKTTask *task, NSError *error) {
         weakSelf.citySearch = nil;
         [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil, nil] show];
     }];

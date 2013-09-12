@@ -21,46 +21,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BkFileLoadingOperation.h"
-#import "BkTaskContent.h"
+#import "BKTBasicStepOperation.h"
 
-@implementation BkFileLoadingOperation
+/**
+ *  A JSON parsing step using NSJSONSerialization.
+ */
+@interface BKTJSONParsingOperation : BKTBasicStepOperation
 
-#pragma mark - Life Cycle
+/**
+ *  Options to pass to the JSON parser. Default value is 0.
+ */
+@property (nonatomic, assign) NSJSONReadingOptions jsonOptions;
 
-+ (id)loadOperationWithFile:(NSURL *)fileURL
-{
-    BkFileLoadingOperation *ope = [self new];
-    ope.fileURL = fileURL;
-    return ope;
-}
-
-#pragma mark - Copy
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    BkFileLoadingOperation *copy = [super copyWithZone:zone];
-    copy->_fileURL = [_fileURL copy];
-    return copy;
-}
-
-#pragma mark -
-
-- (NSString *)inputKey
-{
-    return BkTaskContentBodyData;
-}
-
-- (NSString *)outputKey
-{
-    return BkTaskContentBodyData;
-}
-
-#pragma mark -
-
-- (id) processInput:(id)theInput error:(NSError **)error
-{
-    NSData *fileContent = [NSData dataWithContentsOfURL:_fileURL options:self.readingOptions error:error];
-    return fileContent;
-}
 @end

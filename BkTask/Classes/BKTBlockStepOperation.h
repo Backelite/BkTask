@@ -21,14 +21,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BkBasicStepOperation.h"
+#import "BKTBasicStepOperation.h"
 
-typedef id (^BkBlockStepOperationBlock)(id input, NSError **error);
+typedef id (^BKTBlockStepOperationBlock)(id input, NSError **error);
 
 /**
  *  Class to create simple steps with just a block, avoiding subclassing of BkBasicStepOperation in some cases.
  */
-@interface BkBlockStepOperation : BkBasicStepOperation
+@interface BKTBlockStepOperation : BKTBasicStepOperation
 
 /**
  *  Class method to create a simple step with a block.
@@ -39,7 +39,7 @@ typedef id (^BkBlockStepOperationBlock)(id input, NSError **error);
  *
  *  @return A step ready to be added to a task.
  */
-+ (id) blockOperationWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey block:(BkBlockStepOperationBlock)workBlock;
++ (id) blockOperationWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey block:(BKTBlockStepOperationBlock)workBlock;
 
 /**
  *  Class method to create a simple step with a block. Input and output keys values are BkTaskContentBodyObject.
@@ -49,7 +49,7 @@ typedef id (^BkBlockStepOperationBlock)(id input, NSError **error);
  *
  *  @return A step ready to be added to a task.
  */
-+ (id) blockOperationWithQueue:(NSOperationQueue *)queue block:(BkBlockStepOperationBlock)workBlock;
++ (id) blockOperationWithQueue:(NSOperationQueue *)queue block:(BKTBlockStepOperationBlock)workBlock;
 
 /**
  *  Class method to create a simple step with a block. Input and output keys values are BkTaskContentBodyObject.
@@ -58,7 +58,7 @@ typedef id (^BkBlockStepOperationBlock)(id input, NSError **error);
  *
  *  @return A step ready to be added to a task.
  */
-+ (id) blockOperationWithBlock:(BkBlockStepOperationBlock)workBlock;
++ (id) blockOperationWithBlock:(BKTBlockStepOperationBlock)workBlock;
 
 /**
  *  Initializer to create a simple step with a block.
@@ -70,7 +70,7 @@ typedef id (^BkBlockStepOperationBlock)(id input, NSError **error);
  *
  *  @return A step ready to be added to a task.
  */
-- (id) initWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey queue:(NSOperationQueue *)queue block:(BkBlockStepOperationBlock)workBlock;
+- (id) initWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey queue:(NSOperationQueue *)queue block:(BKTBlockStepOperationBlock)workBlock;
 
 /**
  *  Initializer to create a simple step with a block. The queue is nil, though the step will be executed on the default queue used by the task.
@@ -81,7 +81,7 @@ typedef id (^BkBlockStepOperationBlock)(id input, NSError **error);
  *
  *  @return A step ready to be added to a task.
  */
-- (id) initWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey block:(BkBlockStepOperationBlock)workBlock;
+- (id) initWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey block:(BKTBlockStepOperationBlock)workBlock;
 
 /**
  *  Initializer to create a simple step with a block. The queue is nil, though the step will be executed on the default queue used by the task.
@@ -91,6 +91,6 @@ typedef id (^BkBlockStepOperationBlock)(id input, NSError **error);
  *
  *  @return A step ready to be added to a task.
  */
-- (id) initWithBlock:(BkBlockStepOperationBlock)workBlock;
+- (id) initWithBlock:(BKTBlockStepOperationBlock)workBlock;
 
 @end

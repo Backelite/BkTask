@@ -21,32 +21,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "BkTask.h"
-#import "BkBasicStepOperation.h"
+#import <Foundation/Foundation.h>
+#import "BKTTask.h"
+
+extern NSString * const kBKTaskErrorDomain;
 
 /**
- *  The BkFileLoadingOperation class is an implementation of BkBasicStepOperation used to load a file from disk.
- *  This step is intented to be used as a first step.
+ * Basic implementation of BkTaskStep.
+ * BkBasicStepOperation is abstact and meant to be subclassed.
  */
-@interface BkFileLoadingOperation : BkBasicStepOperation
+@interface BKTBasicStepOperation : NSOperation <BKTTaskStep>
 
 /**
- *  Source URL for loading the file from disk
+ * Abstract method meant to be overridden by the most basic subclasses to perform its task
+ * @discussion Returning nil will cause the task to fail. If your step have no output, simply return [NSNull null].
  */
-@property (nonatomic, copy) NSURL *fileURL;
+- (id) processInput:(id)theInput error:(NSError **)error;
+
 
 /**
- *  Reading options when loading file. Default value is 0.
- */
-@property (nonatomic, assign) NSDataReadingOptions readingOptions;
-
-/**
- *  Helper method to create a file loading step with an URL
+ *  Abstract method. See BkTaskContent for possible values.
  *
- *  @param fileURL The source URL to load file.
- *
- *  @return A file loading step ready to be added to a task.
+ *  @return The input key.
+ *  @see \ref BkTaskContent.
  */
-+ (id) loadOperationWithFile:(NSURL *)fileURL;
+- (NSString *) inputKey;
+
+/**
+ *  Abstract method. See BkTaskContent for possible values.
+ *
+ *  @return The output key.
+ *  @see \ref BkTaskContent.
+ */
+- (NSString *) outputKey;
 
 @end

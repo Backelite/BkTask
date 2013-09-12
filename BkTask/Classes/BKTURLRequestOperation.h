@@ -22,13 +22,13 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "BkTask.h"
-#import "BkTaskContent.h"
+#import "BKTTask.h"
+#import "BKTTaskContent.h"
 
 /**
  *  Implementation of a step allowing to download data. This step takes no input and returns downloaded data as output.
  */
-@interface BkURLRequestOperation : NSOperation <BkTaskStep, NSURLConnectionDataDelegate>
+@interface BKTURLRequestOperation : NSOperation <BKTTaskStep, NSURLConnectionDataDelegate>
 
 /**
  *  The request used to download data.
@@ -60,7 +60,7 @@
 
 @end
 
-@interface BkTaskContent (BkURLRequestOperation)
+@interface BKTTaskContent (BkURLRequestOperation)
 
 /**
  *  The URL response of the receiver.
