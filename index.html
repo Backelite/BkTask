@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>BkTask by Backelite</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>BkTask</h1>
+          <h2>An asynchronous workflows library for iOS</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/Backelite/BkTask/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/Backelite/BkTask/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/Backelite/BkTask" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a name="bktask" class="anchor" href="#bktask"><span class="octicon octicon-link"></span></a>BkTask</h1>
+
+<p>BkTask is a library inspired by the <a href="http://en.wikipedia.org/wiki/Proactor_pattern" title="Proactor pattern on Wikipedia">Proactor</a> and <a href="http://en.wikipedia.org/wiki/Reactor_pattern" title="Reactor pattern on Wikipedia">Reactor</a> design patterns. It is designed with two concepts in mind, asynchronous and modular.<br>
+Doing work asynchronously allows to keep your application responsive. But parallel programming is hard. On iOS, tools like GCD and NSOperation makes it much simpler but, for complex workflows it still takes time and resources to achieve. BkTask allows you to simply run workflows in background and be notified once it is done.  </p>
+
+<p>What about modularity then ? One way to simply a complex task is to breaking it into multiple simple steps. That is how you build a task with BkTask, by adding the steps you need to complete your workflow. If your workflow changes, add or remove steps to update it. You can even create your own steps and reuse them in different workflows. The modular aspect of BkTask helps you to stay agile.</p>
+
+<p>On the technical side, it is built using technologies like NSOperation and key-value observing.<br>
+This library is already used in AppStore applications used by millions of people. </p>
+
+<h2>
+<a name="changes" class="anchor" href="#changes"><span class="octicon octicon-link"></span></a>Changes</h2>
+
+<p>v 0.8  </p>
+
+<ul>
+<li>ARC Conversion</li>
+<li>Added Weather sample project</li>
+<li>Code documentation in appledoc format</li>
+</ul><h2>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h2>
+
+<h3>
+<a name="xcode-configuration" class="anchor" href="#xcode-configuration"><span class="octicon octicon-link"></span></a>Xcode configuration</h3>
+
+<p>The simplest way to use BkTask with your project is with Xcode 4 workspaces. Just drag and drop <code>BkTask.xcodeproj</code> below your other projects in the workspace.<br><img src="https://github.com/Backelite/BkTask/raw/master/Images/BkTask_1.jpg" alt="Drop BkTask xcodeproj into your workspace" title="Drop BkTask xcodeproj into your workspace"></p>
+
+<p>Then, select your project's target and click on the <code>Build Phases</code> tab. Unfold the <code>Link Binary With Libraries</code> section and click on the + button to add a new library.
+Select <code>libBkTask.a</code> and click <code>Add</code>.<br><img src="https://github.com/Backelite/BkTask/raw/master/Images/BkTask_2.jpg" alt="Add libBkTask.a to your target" title="Add libBkTask.a to your target"></p>
+
+<p>As it is a static library, you will need to indicate the path to BkTask headers. To do so, select your project's target and click on the <code>Build Settings</code> tab. Find the <code>Header Search Paths</code> and set the path to the <code>Classes</code> directory of BkTask.
+For instance, let's assume that you have a <code>Libraries</code> directory at the same level of your <code>.xcodeproj</code> where you store all your external libraries. In that case, the header to indicate would be <code>$(SRCROOT)/Librairies/BkTask/Classes</code>.<br><img src="https://github.com/Backelite/BkTask/raw/master/Images/BkTask_3.jpg" alt="Add BkTask headers to your Header Search Paths" title="Add BkTask headers to your Header Search Paths"></p>
+
+<p><strong>To make this step even easier, support for cocoapods is coming soon.</strong></p>
+
+<hr><h3>
+<a name="using-bktask" class="anchor" href="#using-bktask"><span class="octicon octicon-link"></span></a>Using BkTask</h3>
+
+<h4>
+<a name="anatomy-of-a-task" class="anchor" href="#anatomy-of-a-task"><span class="octicon octicon-link"></span></a>Anatomy of a task</h4>
+
+<p>A <em>task</em> is made of multiple <em>steps</em> sharing a <em>content</em> between them. A <em>task</em> monitor <em>step</em> execution and ensure that <em>content</em> is passed through steps. When all the <em>steps</em> are finished, the <em>task</em> notify every observer registered by calling a success block. If one <em>step</em> fails to execute, the <em>task</em> notify observers by calling a failure block. Note that observers for success and failure may be different.<br>
+A <em>step</em> takes data from its input, process them and return the result through its output. The <em>content</em> is processed by each <em>step</em> and is returned when each step has completed.<br>
+A few things to know : </p>
+
+<ul>
+<li>Observers are not retained by a task</li>
+<li>If all observers are removed, the task will stop executing automatically</li>
+<li>A task doesn't retain itself. This means you have to keep ownership a the task until its execution finished or is canceled.</li>
+</ul><h4>
+<a name="lets-code-now" class="anchor" href="#lets-code-now"><span class="octicon octicon-link"></span></a>Let's code now</h4>
+
+<h5>
+<a name="the-most-basic-task-ever" class="anchor" href="#the-most-basic-task-ever"><span class="octicon octicon-link"></span></a>The most basic task ever</h5>
+
+<p>First, add BkTask import</p>
+
+<pre><code>#import "BkTask.h"
+</code></pre>
+
+<p>Now we can create a simple task to load a file from disk</p>
+
+<div class="highlight highlight-Objective-C"><pre>
+    <span class="c1">//Create a task</span>
+    <span class="n">BKTTask</span> <span class="o">*</span><span class="n">aTask</span> <span class="o">=</span> <span class="p">[[</span><span class="n">BKTTask</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+
+    <span class="c1">//Create a file load step</span>
+    <span class="n">BKTFileLoadingOperation</span> <span class="o">*</span><span class="n">fileLoadOperation</span> <span class="o">=</span> <span class="p">[</span><span class="n">BKTFileLoadingOperation</span> <span class="n">loadOperationWithFile</span><span class="o">:</span><span class="n">FILE_TO_OPEN_URL</span><span class="p">];</span>
+
+    <span class="c1">//Add the step to the task</span>
+    <span class="p">[</span><span class="n">aTask</span> <span class="n">addStep</span><span class="o">:</span><span class="n">fileLoadOperation</span><span class="p">];</span>
+
+    <span class="c1">//Set completion and failure blocks</span>
+    <span class="p">[</span><span class="n">aTask</span> <span class="n">addTarget</span><span class="o">:</span><span class="n">self</span> <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">BKTTask</span> <span class="o">*</span><span class="n">task</span><span class="p">,</span> <span class="kt">id</span> <span class="n">output</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Task completed with success"</span><span class="p">);</span>
+    <span class="p">}];</span>
+    <span class="p">[</span><span class="n">aTask</span> <span class="n">addTarget</span><span class="o">:</span><span class="n">self</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">BKTTask</span> <span class="o">*</span><span class="n">task</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Task failed"</span><span class="p">);</span>
+    <span class="p">}];</span>
+
+    <span class="c1">//Start the task</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">myTask</span> <span class="o">=</span> <span class="n">aTask</span><span class="p">;</span> <span class="c1">//To retain the task</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">myTask</span> <span class="n">start</span><span class="p">];</span>
+</pre></div>
+
+<p>Of course, a task with one step is not very usefull and GCD is better at that. However, when you have a workflow with multiple steps, it becomes a mess of nested blocks with GCD while BkTask takes care of chaining steps and passing data through them.</p>
+
+<h5>
+<a name="quick-tasks" class="anchor" href="#quick-tasks"><span class="octicon octicon-link"></span></a>Quick tasks</h5>
+
+<p>For frequent use cases, there are helper methods to build preconfigured tasks.  </p>
+
+<div class="highlight highlight-Objective-C"><pre>
+    <span class="c1">// To create a task with a download URL step</span>
+    <span class="o">+</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span> <span class="n">taskWithRequest</span><span class="o">:</span><span class="p">(</span><span class="n">NSURLRequest</span> <span class="o">*</span><span class="p">)</span><span class="n">aRequest</span><span class="p">;</span>
+
+    <span class="c1">// To create a task with a download URL step and a JSON parsing step</span>
+    <span class="o">+</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span> <span class="n">taskWithJSONRequest</span><span class="o">:</span><span class="p">(</span><span class="n">NSURLRequest</span> <span class="o">*</span><span class="p">)</span><span class="n">aRequest</span><span class="p">;</span>
+</pre></div>
+
+<h5>
+<a name="making-your-own-steps" class="anchor" href="#making-your-own-steps"><span class="octicon octicon-link"></span></a>Making your own steps</h5>
+
+<p>Sometimes, you may have application specific work to execute in background. Or you may want to replace the default JSON parsing step with a step using your favorite JSON parsing library. Or simply, there is no existing step to do what you want.<br>
+BkTask offers multiple ways for creating custom steps. If your step is quite simple and meant to be use only once, you can use <code>BkBlockStepOperation</code> with a block describing how to process the data in your step.</p>
+
+<div class="highlight highlight-Objective-C"><pre>
+    <span class="o">+</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span> <span class="n">blockOperationWithInputKey</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">inKey</span> <span class="n">outputKey</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">outKey</span> <span class="n">block</span><span class="o">:</span><span class="p">(</span><span class="n">BKTBlockStepOperationBlock</span><span class="p">)</span><span class="n">workBlock</span><span class="p">;</span>
+
+    <span class="o">+</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span> <span class="n">blockOperationWithQueue</span><span class="o">:</span><span class="p">(</span><span class="n">NSOperationQueue</span> <span class="o">*</span><span class="p">)</span><span class="n">queue</span> <span class="n">block</span><span class="o">:</span><span class="p">(</span><span class="n">BKTBlockStepOperationBlock</span><span class="p">)</span><span class="n">workBlock</span><span class="p">;</span>
+
+    <span class="o">+</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span> <span class="n">blockOperationWithBlock</span><span class="o">:</span><span class="p">(</span><span class="n">BKTBlockStepOperationBlock</span><span class="p">)</span><span class="n">workBlock</span><span class="p">;</span>
+</pre></div>
+
+<p>The <code>inKey</code> and <code>outKey</code> parameters can take two values :</p>
+
+<ul>
+<li>
+<code>BkTaskContentBodyData</code> means your input (or output respectively) is binary data in a NSData object</li>
+<li>
+<code>BkTaskContentBodyObject</code> means your input (or output respectively) is NSObject subclass</li>
+</ul><p>The ouput type of one step have to be identical to the input of the next step. Otherwise, the task would fail to complete.    </p>
+
+<p>To deeply customize a step, or if you need a reusable step, you can subclass <code>BKTBasicStepOperation</code>. A step is an <code>NSOperation</code> subclass implementing the <code>BKTTaskStep</code> protocol. <code>BKTBasicStepOperation</code> is an abstract class implementing the boilerplate parts to provide a much simpler API to create a class. All you need to do is to override the following methods :</p>
+
+<div class="highlight highlight-Objective-C"><pre>
+    <span class="o">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span> <span class="n">inputKey</span><span class="p">;</span>
+
+    <span class="o">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span> <span class="n">outputKey</span><span class="p">;</span>
+
+    <span class="o">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span> <span class="n">processInput</span><span class="o">:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">theInput</span> <span class="n">error</span><span class="o">:</span><span class="p">(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="n">error</span><span class="p">;</span>
+</pre></div>
+
+<p>The implementation of <code>inputKey</code> and <code>outputKey</code> should return <code>BkTaskContentBodyData</code> or <code>BkTaskContentBodyObject</code> depending on what kind of input your step will process. Then, the <code>processInput: error:</code> method is where the input processing is done, returning the output. Of course, subclassing <code>BKTBasicStepOperation</code> allows you to add any property or method you need to configure and process the input.    </p>
+
+<p>If you create a generic step and think it could be useful to other people, feel free to send a pull request. We would be glad to consider and add it to BkTask.</p>
+
+<hr><h3>
+<a name="sample-project" class="anchor" href="#sample-project"><span class="octicon octicon-link"></span></a>Sample project</h3>
+
+<p>The sample project is a little weather application. You can search for a city and see related forecasts. It demonstrates how to create a task that will download and parse JSON. It also shows how to add a simple custom step to a task using the block method. To see a sample of <code>BKTBasicStepOperation</code> subclassing, you can read the source of <code>BKTJSONParsingOperation</code>.<br>
+Is is intented to run on iOS 6.0 an above. We recommend using Xcode 4.6.2 and above to build it.</p>
+
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>BkTask requires iOS 5.0 and above. If you need iOS 4.3 compatibility, you can exclude the <code>BKTJSONParsingOperation</code> class of the BkTask target and it should be okay. 
+However this tip is not guaranteed to stay true in future releases.<br>
+Xcode 4.6.2 is required to build the BkTask project.</p>
+
+<h3>
+<a name="arc" class="anchor" href="#arc"><span class="octicon octicon-link"></span></a>ARC</h3>
+
+<p>BkTask uses ARC.<br>
+If you are using BkTask in your non-arc project, you will need to set a <code>-fobjc-arc</code> compiler flag on all of the BkTask source files.<br>
+To set a compiler flag in Xcode, go to your active target and select the "Build Phases" tab. Now select all BkTask source files, press Enter, insert -fobjc-arc and then "Done" to enable ARC for BkTask.     </p>
+
+<p>If you use Xcode 4 workspaces with BkTask included as a project into your workspace then you don't need any specific configuration related to ARC.</p>
+
+<h2>
+<a name="licence" class="anchor" href="#licence"><span class="octicon octicon-link"></span></a>Licence</h2>
+
+<p>BkTask is available under the MIT license. See the LICENSE file for more info.</p>
+        </section>
+
+        <footer>
+          BkTask is maintained by <a href="https://github.com/Backelite">Backelite</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
