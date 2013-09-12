@@ -48,19 +48,19 @@ A few things to know :
 ```Objective-C
 
 	//Create a task
-	BkTask *aTask = [[BkTask alloc] init];
+	BKTTask *aTask = [[BKTTask alloc] init];
 
 	//Create a file load step
-	BkFileLoadingOperation *fileLoadOperation = [BkFileLoadingOperation loadOperationWithFile:FILE_TO_OPEN_URL];
+	BKTFileLoadingOperation *fileLoadOperation = [BKTFileLoadingOperation loadOperationWithFile:FILE_TO_OPEN_URL];
 
 	//Add the step to the task
 	[aTask addStep:fileLoadOperation];
 
 	//Set completion and failure blocks
-	[aTask addTarget:self completion:^(BkTask *task, id output) {
+	[aTask addTarget:self completion:^(BKTTask *task, id output) {
     NSLog(@"Task completed with success");
 	}];
-	[aTask addTarget:self failure:^(BkTask *task, NSError *error) {
+	[aTask addTarget:self failure:^(BKTTask *task, NSError *error) {
     NSLog(@"Task failed");
 	}];
 
@@ -103,7 +103,7 @@ The `inKey` and `outKey` parameters can take two values :
 
 The ouput type of one step have to be identical to the input of the next step. Otherwise, the task would fail to complete.    
 
-To deeply customize a step, or if you need a reusable step, you can subclass `BkBasicStepOperation`. A step is an `NSOperation` subclass implementing the `BkTaskStep` protocol. `BkBasicStepOperation` is an abstract class implementing the boilerplate parts to provide a much simpler API to create a class. All you need to do is to override the following methods :
+To deeply customize a step, or if you need a reusable step, you can subclass `BKTBasicStepOperation`. A step is an `NSOperation` subclass implementing the `BKTTaskStep` protocol. `BKTBasicStepOperation` is an abstract class implementing the boilerplate parts to provide a much simpler API to create a class. All you need to do is to override the following methods :
 
 ```Objective-C
 
@@ -114,18 +114,18 @@ To deeply customize a step, or if you need a reusable step, you can subclass `Bk
 	- (id) processInput:(id)theInput error:(NSError **)error;
 ```
 
-The implementation of `inputKey` and `outputKey` should return `BkTaskContentBodyData` or `BkTaskContentBodyObject` depending on what kind of input your step will process. Then, the `processInput: error:` method is where the input processing is done, returning the output. Of course, subclassing `BkBasicStepOperation` allows you to add any property or method you need to configure and process the input.    
+The implementation of `inputKey` and `outputKey` should return `BkTaskContentBodyData` or `BkTaskContentBodyObject` depending on what kind of input your step will process. Then, the `processInput: error:` method is where the input processing is done, returning the output. Of course, subclassing `BKTBasicStepOperation` allows you to add any property or method you need to configure and process the input.    
 
 If you create a generic step and think it could be useful to other people, feel free to send a pull request. We would be glad to consider and add it to BkTask.
 
 -------
 
 ### Sample project
-The sample project is a little weather application. You can search for a city and see related forecasts. It demonstrates how to create a task that will download and parse JSON. It also shows how to add a simple custom step to a task using the block method. To see a sample of `BkBasicStepOperation` subclassing, you can read the source of `BkJSONParsingOperation`.  
+The sample project is a little weather application. You can search for a city and see related forecasts. It demonstrates how to create a task that will download and parse JSON. It also shows how to add a simple custom step to a task using the block method. To see a sample of `BKTBasicStepOperation` subclassing, you can read the source of `BKTJSONParsingOperation`.  
 Is is intented to run on iOS 6.0 an above. We recommend using Xcode 4.6.2 and above to build it.
 
 ## Requirements
-BkTask requires iOS 5.0 and above. If you need iOS 4.3 compatibility, you can exclude the `BkJSONParsingOperation` class of the BkTask target and it should be okay. 
+BkTask requires iOS 5.0 and above. If you need iOS 4.3 compatibility, you can exclude the `BKTJSONParsingOperation` class of the BkTask target and it should be okay. 
 However this tip is not guaranteed to stay true in future releases.  
 Xcode 4.6.2 is required to build the BkTask project.
 
