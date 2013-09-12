@@ -16,7 +16,7 @@
 #import "BKWForecast.h"
 
 // BkTask
-#import "BkTaskCore.h"
+#import "BkTask.h"
 
 @interface BKWSearchViewController ()
 

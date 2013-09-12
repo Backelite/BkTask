@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B3E967017CDF3F600FDA6BE /* BkTaskCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B3E966F17CDF3F600FDA6BE /* BkTaskCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2B3E967117CDF3F600FDA6BE /* BkTaskCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B3E966F17CDF3F600FDA6BE /* BkTaskCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2B3E967017CDF3F600FDA6BE /* BkTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B3E966F17CDF3F600FDA6BE /* BkTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2B3E967117CDF3F600FDA6BE /* BkTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B3E966F17CDF3F600FDA6BE /* BkTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2BA7807317C4BED900D01343 /* BKTTask+BkNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BA7806F17C4BED900D01343 /* BKTTask+BkNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2BA7807417C4BED900D01343 /* BKTTask+BkNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BA7806F17C4BED900D01343 /* BKTTask+BkNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2BA7807517C4BED900D01343 /* BKTTask+BkNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7807017C4BED900D01343 /* BKTTask+BkNetwork.m */; };
@@ -69,7 +69,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2B3E966F17CDF3F600FDA6BE /* BkTaskCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BkTaskCore.h; sourceTree = "<group>"; };
+		2B3E966F17CDF3F600FDA6BE /* BkTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BkTask.h; sourceTree = "<group>"; };
 		2BA7806F17C4BED900D01343 /* BKTTask+BkNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BKTTask+BkNetwork.h"; sourceTree = "<group>"; };
 		2BA7807017C4BED900D01343 /* BKTTask+BkNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BKTTask+BkNetwork.m"; sourceTree = "<group>"; };
 		2BA7807117C4BED900D01343 /* BKTURLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKTURLRequestOperation.h; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2B3E966F17CDF3F600FDA6BE /* BkTaskCore.h */,
+				2B3E966F17CDF3F600FDA6BE /* BkTask.h */,
 				357E2F1B1020A78000A99D42 /* Categories */,
 				8A4322081423B0D800BA7F46 /* Task */,
 				2BA7806C17C4BE6000D01343 /* Steps */,
@@ -339,7 +339,7 @@
 				2BA7808417C4C05100D01343 /* BKTJSONParsingOperation.h in Headers */,
 				2BA7808A17C4C1EF00D01343 /* UIApplication+BkCore.h in Headers */,
 				2BA7809117C4CD8C00D01343 /* BKTFileLoadingOperation.h in Headers */,
-				2B3E967117CDF3F600FDA6BE /* BkTaskCore.h in Headers */,
+				2B3E967117CDF3F600FDA6BE /* BkTask.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +360,7 @@
 				2BA7808317C4C05100D01343 /* BKTJSONParsingOperation.h in Headers */,
 				2BA7808917C4C1EF00D01343 /* UIApplication+BkCore.h in Headers */,
 				2BA7809017C4CD8C00D01343 /* BKTFileLoadingOperation.h in Headers */,
-				2B3E967017CDF3F600FDA6BE /* BkTaskCore.h in Headers */,
+				2B3E967017CDF3F600FDA6BE /* BkTask.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

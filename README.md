@@ -45,6 +45,12 @@ A few things to know :
 #### Let's code now
 ##### The most basic task ever
 
+First, add BkTask import
+
+	#import "BkTask.h"
+
+Now we can create a simple task to load a file from disk
+
 ```Objective-C
 
 	//Create a task
@@ -89,11 +95,11 @@ BkTask offers multiple ways for creating custom steps. If your step is quite sim
 
 ```Objective-C
 
-	+ (id) blockOperationWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey block:(BkBlockStepOperationBlock)workBlock;
+	+ (id) blockOperationWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey block:(BKTBlockStepOperationBlock)workBlock;
 	
-	+ (id) blockOperationWithQueue:(NSOperationQueue *)queue block:(BkBlockStepOperationBlock)workBlock;
+	+ (id) blockOperationWithQueue:(NSOperationQueue *)queue block:(BKTBlockStepOperationBlock)workBlock;
 	
-	+ (id) blockOperationWithBlock:(BkBlockStepOperationBlock)workBlock;
+	+ (id) blockOperationWithBlock:(BKTBlockStepOperationBlock)workBlock;
 ```
 
 The `inKey` and `outKey` parameters can take two values :
