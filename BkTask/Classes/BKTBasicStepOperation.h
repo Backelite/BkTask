@@ -28,7 +28,7 @@ extern NSString * const kBKTaskErrorDomain;
 
 /**
  * Basic implementation of BkTaskStep.
- * BkBasicStepOperation is abstact and meant to be subclassed.
+ * BKTBasicStepOperation is abstact and meant to be subclassed.
  */
 @interface BKTBasicStepOperation : NSOperation <BKTTaskStep>
 
@@ -40,7 +40,7 @@ extern NSString * const kBKTaskErrorDomain;
 
 
 /**
- *  Abstract method. See BkTaskContent for possible values.
+ *  Abstract method. See \ref BKTTaskContent for possible values.
  *
  *  @return The input key.
  *  @see \ref BkTaskContent.
@@ -48,7 +48,7 @@ extern NSString * const kBKTaskErrorDomain;
 - (NSString *) inputKey;
 
 /**
- *  Abstract method. See BkTaskContent for possible values.
+ *  Abstract method. See \ref BKTTaskContent for possible values.
  *
  *  @return The output key.
  *  @see \ref BkTaskContent.

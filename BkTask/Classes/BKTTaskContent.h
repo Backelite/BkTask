@@ -24,7 +24,7 @@
 #import <Foundation/Foundation.h>
 
 /**
- *  The BkTYaskContent class is intented to represent the content exchanged between the steps.
+ *  The BKTTaskContent class is intented to represent the content exchanged between the steps.
  */
 @interface BKTTaskContent : NSObject <NSCopying>
 

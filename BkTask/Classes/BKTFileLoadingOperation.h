@@ -25,7 +25,7 @@
 #import "BKTBasicStepOperation.h"
 
 /**
- *  The BkFileLoadingOperation class is an implementation of BkBasicStepOperation used to load a file from disk.
+ *  The BKTFileLoadingOperation class is an implementation of BKTBasicStepOperation used to load a file from disk.
  *  This step is intented to be used as a first step.
  */
 @interface BKTFileLoadingOperation : BKTBasicStepOperation

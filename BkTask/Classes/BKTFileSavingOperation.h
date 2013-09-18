@@ -25,7 +25,7 @@
 #import "BKTBasicStepOperation.h"
 
 /**
- *  The BkFileSavingOperation class is an implementation of BkBasicStepOperation used to save file on disk.
+ *  The BKTFileSavingOperation class is an implementation of BKTBasicStepOperation used to save file on disk.
  */
 @interface BKTFileSavingOperation : BKTBasicStepOperation
 
