@@ -30,12 +30,12 @@
 
 - (NSString *)inputKey
 {
-    return BkTaskContentBodyData;
+    return kBkTaskContentBodyData;
 }
 
 - (NSString *)outputKey
 {
-    return BkTaskContentBodyObject;
+    return kBkTaskContentBodyObject;
 }
 
 #pragma mark -

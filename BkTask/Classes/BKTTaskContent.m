@@ -24,8 +24,8 @@
 #import <objc/runtime.h>
 #import "BKTTaskContent.h"
 
-NSString * const BkTaskContentBodyData = @"bodyData";
-NSString * const BkTaskContentBodyObject = @"bodyObject";
+NSString * const kBkTaskContentBodyData = @"bodyData";
+NSString * const kBkTaskContentBodyObject = @"bodyObject";
 
 @implementation BKTTaskContent {
     NSMutableDictionary *values;

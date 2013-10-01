@@ -46,13 +46,13 @@
 - (void) setContentValue:(id)value forKey:(NSString *)key;
 
 /**
- *  Content to process for task with input key of type BkTaskContentBodyData
+ *  Content to process for task with input key of type kBkTaskContentBodyData
  */
 @property (nonatomic, copy) NSData *bodyData;
 
 
 /**
- *  Content to process for task with input key of type BkTaskContentBodyObject
+ *  Content to process for task with input key of type kBkTaskContentBodyObject
  */
 @property (nonatomic, strong) id bodyObject;
 
@@ -61,10 +61,10 @@
 /**
  *  Constant use to define content type as NSData
  */
-extern NSString * const BkTaskContentBodyData;
+extern NSString * const kBkTaskContentBodyData;
 
 /**
  *  Constant use to define content type as NSObject or subclasses
  */
-extern NSString * const BkTaskContentBodyObject;
+extern NSString * const kBkTaskContentBodyObject;
 

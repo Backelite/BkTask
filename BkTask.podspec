@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
 
   s.homepage     = "http://backelite.github.io/BkTask/"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
-  s.author       = { "Backelite" => "apps+github@backelite.com" }
+  s.author       = "Backelite"
   s.platform     = :ios, '5.0'
   s.source       = { :git => "https://github.com/Backelite/BkTask.git", :tag => "0.8" }
 

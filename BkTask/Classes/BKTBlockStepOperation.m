@@ -44,12 +44,12 @@
 
 + (id)blockOperationWithBlock:(BKTBlockStepOperationBlock)workBlock
 {
-    return [self blockOperationWithInputKey:BkTaskContentBodyObject outputKey:BkTaskContentBodyObject block:workBlock];
+    return [self blockOperationWithInputKey:kBkTaskContentBodyObject outputKey:kBkTaskContentBodyObject block:workBlock];
 }
 
 + (id)blockOperationWithQueue:(NSOperationQueue *)queue block:(BKTBlockStepOperationBlock)workBlock
 {
-    return [[self alloc] initWithInputKey:BkTaskContentBodyObject outputKey:BkTaskContentBodyObject queue:queue block:workBlock];
+    return [[self alloc] initWithInputKey:kBkTaskContentBodyObject outputKey:kBkTaskContentBodyObject queue:queue block:workBlock];
 }
 + (id)blockOperationWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey block:(BKTBlockStepOperationBlock)workBlock
 {
@@ -75,7 +75,7 @@
 
 - (id) initWithBlock:(id (^)(id input, NSError **error))workBlock
 {
-    return [self initWithInputKey:BkTaskContentBodyObject outputKey:BkTaskContentBodyObject block:workBlock];
+    return [self initWithInputKey:kBkTaskContentBodyObject outputKey:kBkTaskContentBodyObject block:workBlock];
 }
 
 - (id) init
