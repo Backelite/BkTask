@@ -231,7 +231,7 @@ static NSString *stringFromBool(BOOL yesorno)
             }
         }
     } else {
-        bk_dispatch_sync(dispatch_get_main_queue(), ^{
+        dispatch_sync(dispatch_get_main_queue(), ^{
             [self invokeTargets:handlers withOutput:output];
         });
     }

@@ -44,16 +44,3 @@
 #else
 #define BkBlock_copy Block_copy
 #endif
-
-/**
- * Like dispatch_sync but without dead lock if 'queue' is the current queue.
- * Deadlocks are still possible in other circumpstances
- */
-static inline void bk_dispatch_sync(dispatch_queue_t queue, dispatch_block_t block)
-{
-    if (queue == dispatch_get_current_queue()) {
-        block();
-    } else {
-        dispatch_sync(queue, block);
-    }
-}
