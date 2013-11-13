@@ -15,7 +15,12 @@ v 0.8
 * Code documentation in appledoc format
 
 ## Getting started
-### Xcode configuration
+### The Pod way
+Just add the following line in your podfile
+
+	pod 'BkTask'
+
+### The old school way
 The simplest way to use BkTask with your project is with Xcode 4 workspaces. Just drag and drop `BkTask.xcodeproj` below your other projects in the workspace.  
 ![Drop BkTask xcodeproj into your workspace](https://github.com/Backelite/BkTask/raw/master/Images/BkTask_1.jpg "Drop BkTask xcodeproj into your workspace")  
 
@@ -26,8 +31,6 @@ Select `libBkTask.a` and click `Add`.
 As it is a static library, you will need to indicate the path to BkTask headers. To do so, select your project's target and click on the `Build Settings` tab. Find the `Header Search Paths` and set the path to the `Classes` directory of BkTask.
 For instance, let's assume that you have a `Libraries` directory at the same level of your `.xcodeproj` where you store all your external libraries. In that case, the header to indicate would be `$(SRCROOT)/Librairies/BkTask/Classes`.  
 ![Add BkTask headers to your Header Search Paths](https://github.com/Backelite/BkTask/raw/master/Images/BkTask_3.jpg "Add BkTask headers to your Header Search Paths")  
-
-__To make this step even easier, support for cocoapods is coming soon.__
 
 -------
 
