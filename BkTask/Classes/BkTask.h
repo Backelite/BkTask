@@ -33,4 +33,5 @@
 #import "BKTFileSavingOperation.h"
 #import "BKTFileLoadingOperation.h"
 #import "BKTURLRequestOperation.h"
+#import "BKTURLSessionLoadingOperation.h"
 #import "BKTJSONParsingOperation.h"
