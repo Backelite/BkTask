@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B303E991845FCD900EAB2CE /* BKTURLSessionLoadingOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B303E971845FCD900EAB2CE /* BKTURLSessionLoadingOperation.h */; };
+		2B303E9A1845FCD900EAB2CE /* BKTURLSessionLoadingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B303E981845FCD900EAB2CE /* BKTURLSessionLoadingOperation.m */; };
 		2B3E967017CDF3F600FDA6BE /* BkTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B3E966F17CDF3F600FDA6BE /* BkTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2B3E967117CDF3F600FDA6BE /* BkTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B3E966F17CDF3F600FDA6BE /* BkTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2BA7807317C4BED900D01343 /* BKTTask+BkNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BA7806F17C4BED900D01343 /* BKTTask+BkNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -69,6 +71,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B303E971845FCD900EAB2CE /* BKTURLSessionLoadingOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKTURLSessionLoadingOperation.h; sourceTree = "<group>"; };
+		2B303E981845FCD900EAB2CE /* BKTURLSessionLoadingOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKTURLSessionLoadingOperation.m; sourceTree = "<group>"; };
 		2B3E966F17CDF3F600FDA6BE /* BkTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BkTask.h; sourceTree = "<group>"; };
 		2BA7806F17C4BED900D01343 /* BKTTask+BkNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BKTTask+BkNetwork.h"; sourceTree = "<group>"; };
 		2BA7807017C4BED900D01343 /* BKTTask+BkNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BKTTask+BkNetwork.m"; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 			children = (
 				2BA7806F17C4BED900D01343 /* BKTTask+BkNetwork.h */,
 				2BA7807017C4BED900D01343 /* BKTTask+BkNetwork.m */,
+				2B303E971845FCD900EAB2CE /* BKTURLSessionLoadingOperation.h */,
+				2B303E981845FCD900EAB2CE /* BKTURLSessionLoadingOperation.m */,
 				2BA7807117C4BED900D01343 /* BKTURLRequestOperation.h */,
 				2BA7807217C4BED900D01343 /* BKTURLRequestOperation.m */,
 				2BA7808117C4C05000D01343 /* BKTJSONParsingOperation.h */,
@@ -349,6 +355,7 @@
 			files = (
 				8AFC1C8414D702A4003C1B10 /* BKTTask.h in Headers */,
 				8A0D73E314D7FFE000522416 /* BKTBasicStepOperation.h in Headers */,
+				2B303E991845FCD900EAB2CE /* BKTURLSessionLoadingOperation.h in Headers */,
 				8A0D741114D81D1D00522416 /* BKTAssert.h in Headers */,
 				8A58D4F71501218900DC01B3 /* BKTTaskContent.h in Headers */,
 				8A4C1EB8153842330025B3BF /* BKTBlockStepOperation.h in Headers */,
@@ -563,6 +570,7 @@
 				8A4C1EBA153842330025B3BF /* BKTBlockStepOperation.m in Sources */,
 				48ED9226158643BD00B32734 /* BKTBasicStepOperation.m in Sources */,
 				8A8F01F915F7A1EF001653F7 /* BKTTaskObserver.m in Sources */,
+				2B303E9A1845FCD900EAB2CE /* BKTURLSessionLoadingOperation.m in Sources */,
 				2BA7807517C4BED900D01343 /* BKTTask+BkNetwork.m in Sources */,
 				2BA7807917C4BED900D01343 /* BKTURLRequestOperation.m in Sources */,
 				2BA7807F17C4BEED00D01343 /* BKTFileSavingOperation.m in Sources */,
