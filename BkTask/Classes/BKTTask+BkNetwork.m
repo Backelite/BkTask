@@ -24,6 +24,7 @@
 #import "BKTTask+BkNetwork.h"
 
 #import "BKTURLRequestOperation.h"
+#import "BKTURLSessionLoadingOperation.h"
 #import "BKTJSONParsingOperation.h"
 
 @implementation BKTTask (BkNetwork)
@@ -39,6 +40,23 @@
 + (id) taskWithJSONRequest:(NSURLRequest *)aRequest
 {
     BKTTask *task = [self taskWithRequest:aRequest];
+    BKTJSONParsingOperation *jsonOp = [BKTJSONParsingOperation new];
+    [task addStep:jsonOp];
+    return task;
+}
+
++ (id) sessionTaskWithRequest:(NSURLRequest *)aRequest session:(NSURLSession *)session
+{
+    BKTTask *newtask = [BKTTask new];
+    BKTURLSessionLoadingOperation *reqOp = [[BKTURLSessionLoadingOperation alloc] initWithRequest:aRequest];
+    [reqOp setSession:session];
+    [newtask addStep:reqOp];
+    return newtask;
+}
+
++ (id) sessionTaskWithJSONRequest:(NSURLRequest *)aRequest session:(NSURLSession *)session
+{
+    BKTTask *task = [self sessionTaskWithRequest:aRequest session:session];
     BKTJSONParsingOperation *jsonOp = [BKTJSONParsingOperation new];
     [task addStep:jsonOp];
     return task;
