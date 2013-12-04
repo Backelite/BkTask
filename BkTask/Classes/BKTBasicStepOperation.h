@@ -28,7 +28,7 @@ extern NSString * const kBKTaskErrorDomain;
 
 /**
  * Basic implementation of BkTaskStep.
- * BKTBasicStepOperation is abstact and meant to be subclassed.
+ * BKTBasicStepOperation is abstract and meant to be subclassed.
  */
 @interface BKTBasicStepOperation : NSOperation <BKTTaskStep>
 
