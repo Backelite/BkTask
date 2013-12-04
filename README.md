@@ -7,6 +7,8 @@ What about modularity then ? One way to simply a complex task is to breaking it 
 On the technical side, it is built using technologies like NSOperation and key-value observing.  
 This library is already used in AppStore applications used by millions of people. 
 
+![Parallel Flow](https://github.com/Backelite/BkTask/raw/master/Images/parallel.png "Parallel Flow") 
+
 ## Changes
 
 v 0.9
