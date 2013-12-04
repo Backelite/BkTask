@@ -1,3 +1,5 @@
+![Parallel Flow](https://github.com/Backelite/BkTask/raw/master/Images/parallel.png "Parallel Flow") 
+
 # BkTask
 BkTask is a library inspired by the [Proactor](http://en.wikipedia.org/wiki/Proactor_pattern "Proactor pattern on Wikipedia") and [Reactor](http://en.wikipedia.org/wiki/Reactor_pattern "Reactor pattern on Wikipedia") design patterns. It is designed with two concepts in mind, asynchronous and modular.  
 Doing work asynchronously allows to keep your application responsive. But parallel programming is hard. On iOS, tools like GCD and NSOperation makes it much simpler but, for complex workflows it still takes time and resources to achieve. BkTask allows you to simply run workflows in background and be notified once it is done.  
@@ -6,8 +8,6 @@ What about modularity then ? One way to simply a complex task is to breaking it 
 
 On the technical side, it is built using technologies like NSOperation and key-value observing.  
 This library is already used in AppStore applications used by millions of people. 
-
-![Parallel Flow](https://github.com/Backelite/BkTask/raw/master/Images/parallel.png "Parallel Flow") 
 
 ## Changes
 
