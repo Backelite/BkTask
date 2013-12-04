@@ -8,6 +8,15 @@ On the technical side, it is built using technologies like NSOperation and key-v
 This library is already used in AppStore applications used by millions of people. 
 
 ## Changes
+
+v 0.9
+
+* Xcode 5 with iOS SDK 7.0 is now required (see [Requirements](#requirements) for more info)
+* Created a new step to download data using NSURLSession
+* In a JSON parsing step, an empty JSON file is now considered as valid
+* Removed warnings when compiling with Xcode 5
+* Code cleaning
+
 v 0.8  
 
 * ARC Conversion
@@ -130,10 +139,10 @@ If you create a generic step and think it could be useful to other people, feel 
 The sample project is a little weather application. You can search for a city and see related forecasts. It demonstrates how to create a task that will download and parse JSON. It also shows how to add a simple custom step to a task using the block method. To see a sample of `BKTBasicStepOperation` subclassing, you can read the source of `BKTJSONParsingOperation`.  
 Is is intented to run on iOS 6.0 an above. We recommend using Xcode 4.6.2 and above to build it.
 
-## Requirements
+## <a name="requirements"></a> Requirements
 BkTask requires iOS 5.0 and above. If you need iOS 4.3 compatibility, you can exclude the `BKTJSONParsingOperation` class of the BkTask target and it should be okay. 
 However this tip is not guaranteed to stay true in future releases.  
-Xcode 4.6.2 is required to build the BkTask project.
+Xcode 5.0 is required to build the BkTask project. The `BKTURLSessionLoadingOperation` cannot be used before iOS 7.0.
 
 ### ARC
 BkTask uses ARC.  
