@@ -30,21 +30,21 @@
 
 - (NSString *)inputKey
 {
-    return BkTaskContentBodyData;
+    return kBkTaskContentBodyData;
 }
 
 - (NSString *)outputKey
 {
-    return BkTaskContentBodyObject;
+    return kBkTaskContentBodyObject;
 }
 
 #pragma mark -
 
 - (id) processInput:(id)theInput error:(NSError **)error
 {
-    id jsonObject = nil;
+    id jsonObject = [NSNull null];
     NSData *data = theInput;
-    if (nil != data) {
+    if (nil != data && [data length]) {
         jsonObject = [NSJSONSerialization JSONObjectWithData:data options:self.jsonOptions error:error];
     }
     return jsonObject;

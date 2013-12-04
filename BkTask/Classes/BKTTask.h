@@ -33,10 +33,8 @@ typedef void (^BKTTaskFailure)(BKTTask *task, NSError *error);
 /**
  * Asynchronous task group.
  *
- * Meant particularly to handle url request when used with [BkURLRequestOperation]
+ * Meant particularly to handle url request when used with \ref BKTURLRequestOperation
  *
- * @ingroup Task
- * @see BkTask, BkURLRequestOperation (in BkNetwork), BkTask(BkURLRequestOperation) (in BkNetwork)
  */
 @interface BKTTask : NSObject <NSCopying>
 

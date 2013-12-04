@@ -65,7 +65,7 @@ typedef enum BkTaskTarget {
 
 @end
 
-@interface BkTaskTargetInvocation : NSObject
+@interface BKTTaskTargetInvocation : NSObject
 + (id) invocationWithTarget:(id)target completion:(BKTTaskCompletion)completion;
 + (id) invocationWithTarget:(id)target selector:(SEL)selector;
 @property (nonatomic, unsafe_unretained) id target;
@@ -199,7 +199,7 @@ static NSString *stringFromBool(BOOL yesorno)
 #pragma mark Target
 #pragma mark * Generic
 
-- (void) addTargetInvocation:(BkTaskTargetInvocation *)targetInvocation inHandlers:(NSMutableArray *)handlers
+- (void) addTargetInvocation:(BKTTaskTargetInvocation *)targetInvocation inHandlers:(NSMutableArray *)handlers
 {
     @synchronized (handlers) {
         NSAssert(nil != handlers, @"(task: %@) target list is nil, target invocation won't be added !", self);
@@ -226,12 +226,12 @@ static NSString *stringFromBool(BOOL yesorno)
 {
     if ([NSThread isMainThread]) {
         @synchronized (handlers) {
-            for (BkTaskTargetInvocation *inv in handlers) {
+            for (BKTTaskTargetInvocation *inv in handlers) {
                 [inv invokeWithTask:self output:output];
             }
         }
     } else {
-        bk_dispatch_sync(dispatch_get_main_queue(), ^{
+        dispatch_sync(dispatch_get_main_queue(), ^{
             [self invokeTargets:handlers withOutput:output];
         });
     }
@@ -241,7 +241,7 @@ static NSString *stringFromBool(BOOL yesorno)
 
 - (void) addTarget:(id)target completion:(BKTTaskCompletion)completion
 {
-    [self addTargetInvocation:[BkTaskTargetInvocation invocationWithTarget:target completion:completion]
+    [self addTargetInvocation:[BKTTaskTargetInvocation invocationWithTarget:target completion:completion]
                    inHandlers:completionHandlers];
 }
 
@@ -266,7 +266,7 @@ static NSString *stringFromBool(BOOL yesorno)
 
 - (void)addTarget:(id)target failure:(BKTTaskFailure)failureBlock
 {
-    [self addTargetInvocation:[BkTaskTargetInvocation invocationWithTarget:target completion:failureBlock]
+    [self addTargetInvocation:[BKTTaskTargetInvocation invocationWithTarget:target completion:failureBlock]
                    inHandlers:failureHandlers];
 }
 
@@ -416,23 +416,23 @@ static NSString *stringFromBool(BOOL yesorno)
 
 #pragma mark - internal classes
 
-@interface BkTaskTargetInvocationSelector : BkTaskTargetInvocation
+@interface BKTTaskTargetInvocationSelector : BKTTaskTargetInvocation
 @property (nonatomic) SEL selector;
 @end
 
-@interface BkTaskTargetInvocationBlock : BkTaskTargetInvocation
+@interface BKTTaskTargetInvocationBlock : BKTTaskTargetInvocation
 @property (nonatomic, copy) BKTTaskCompletion block;
 @end
 
 
 
-@implementation BkTaskTargetInvocation
+@implementation BKTTaskTargetInvocation
 @synthesize target;
 + (id) invocationWithTarget:(id)target completion:(BKTTaskCompletion)completion
 {
     NSParameterAssert(target != nil);
     NSParameterAssert(completion != nil);
-    BkTaskTargetInvocationBlock *b = [BkTaskTargetInvocationBlock new];
+    BKTTaskTargetInvocationBlock *b = [BKTTaskTargetInvocationBlock new];
     b.target = target;
     b.block = completion;
     return b;
@@ -441,7 +441,7 @@ static NSString *stringFromBool(BOOL yesorno)
 {
     NSParameterAssert(target != nil);
     NSParameterAssert(selector != nil);
-    BkTaskTargetInvocationSelector *b = [BkTaskTargetInvocationSelector new];
+    BKTTaskTargetInvocationSelector *b = [BKTTaskTargetInvocationSelector new];
     b.target = target;
     b.selector = selector;
     return b;
@@ -452,7 +452,7 @@ static NSString *stringFromBool(BOOL yesorno)
 }
 @end
 
-@implementation BkTaskTargetInvocationSelector
+@implementation BKTTaskTargetInvocationSelector
 @synthesize selector;
 - (void)invokeWithTask:(BKTTask *)t output:(id)output
 {
@@ -468,7 +468,7 @@ static NSString *stringFromBool(BOOL yesorno)
 }
 @end
 
-@implementation BkTaskTargetInvocationBlock
+@implementation BKTTaskTargetInvocationBlock
 @synthesize block;
 
 - (void)invokeWithTask:(BKTTask *)t output:(id)output

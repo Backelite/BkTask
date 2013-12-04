@@ -26,7 +26,7 @@
 @interface BKTTask (BkNetwork)
 
 /**
- *  Create a task to execute the request and download the content. It adds an BkURLRequestOperation initialized with 'aRequest' as first step.
+ *  Create a task to execute the request and download the content. It adds an \ref BKTURLRequestOperation initialized with 'aRequest' as first step.
  *  Other steps can be added after.
  *
  *  @param aRequest The request to use to create a download operation as a first step.
@@ -37,8 +37,8 @@
 
 
 /**
- *  Create a task to execute the request, then parse the resulting data as json. It adds an BkURLRequestOperation initialized with 'aRequest' as first step,
- *  And a BkJSONParsingOperation as second step. Other steps can be added after.
+ *  Create a task to execute the request, then parse the resulting data as json. It adds an \ref BKTURLRequestOperation initialized with 'aRequest' as first step,
+ *  And a BKTJSONParsingOperation as second step. Other steps can be added after.
  *  The JSON parser is NSJSONSerialization ; iOS 5.0 or better is required.
  *
  *  @param aRequest The request to use to create a download operation as a first step.
@@ -46,5 +46,27 @@
  *  @return The task initialized with a download step and a JSON parsing step.
  */
 + (id) taskWithJSONRequest:(NSURLRequest *)aRequest;
+
+/**
+ *  Create a task to execute the request using NSURLSession and download the content. It adds an \ref BKTURLSessionLoadingOperation initialized with 'aRequest' as first step.
+ *  Other steps can be added after.
+ *
+ *  @param aRequest The request to use to create a download operation as a first step.
+ *
+ *  @return The task initialized with a download step.
+ */
++ (id) sessionTaskWithRequest:(NSURLRequest *)aRequest session:(NSURLSession *)session;
+
+
+/**
+ *  Create a task to execute the request, then parse the resulting data as json. It adds an \ref BKTURLSessionLoadingOperation initialized with 'aRequest' as first step,
+ *  And a BKTJSONParsingOperation as second step. Other steps can be added after.
+ *  The JSON parser is NSJSONSerialization ; iOS 5.0 or better is required.
+ *
+ *  @param aRequest The request to use to create a download operation as a first step.
+ *
+ *  @return The task initialized with a download step and a JSON parsing step.
+ */
++ (id) sessionTaskWithJSONRequest:(NSURLRequest *)aRequest session:(NSURLSession *)session;
 
 @end

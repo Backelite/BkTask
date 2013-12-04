@@ -21,26 +21,41 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
-#import "BKTBasicStepOperation.h"
+#import "BKTTask.h"
 
 /**
- *  The BKTFileSavingOperation class is an implementation of BKTBasicStepOperation used to save file on disk.
+ * A data loading step similar to \ref BKTURLRequestOperation but using NSURLSession and NSURLSessionDataTask
  */
-@interface BKTFileSavingOperation : BKTBasicStepOperation
+@interface BKTURLSessionLoadingOperation : NSOperation <BKTTaskStep>
 
 /**
- *  Destination URL for saving input as a file.
+ *  The request used to download data.
  */
-@property (nonatomic, copy) NSURL *fileURL;
+@property (copy, readonly) NSURLRequest *request;
 
 /**
- *  Helper method to create a file saving step with an URL.
+ *  The session used to create the NSURLSessionDataTask. Background sessions are not supported as they are only
+ compatible with NSURLSessionDownloadTask and NSURLSessionUploadTask.
+ @discussion If not set, the step will use the [NSURLSession sharedSession] by default
+ */
+@property (strong, nonatomic) NSURLSession *session;
+
+/**
+ *  Initializer for the session loading step.
  *
- *  @param fileURL The destination URL to save file.
+ *  @param urlRequest The request used to download data.
  *
- *  @return A file saving step ready to be added to a task.
+ *  @return A step initialized with a request.
  */
-+ (id) saveOperationWithFile:(NSURL *)fileURL;
+- (instancetype) initWithRequest:(NSURLRequest *)urlRequest;
+
+/**
+ *  Class method to initialize a session loading step
+ *
+ *  @param urlRequest The request used to download data.
+ *
+ *  @return A step initialized with a request.
+ */
++ (instancetype) operationWithRequest:(NSURLRequest *)urlRequest;
 
 @end

@@ -93,7 +93,7 @@ static NSString *taskIsFinishedKeyPath = @"isFinished";
 - (void) observeValueForIsFinished:(BOOL)isFinished ofTask:(BKTTask *)aTask
 {
     if (isFinished) {
-        //TODO: call delegate
+        [self.delegate observer:self taskDidFinish:aTask];
         [self stopObservingTask:aTask];
     }
 }

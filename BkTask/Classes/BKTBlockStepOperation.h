@@ -26,7 +26,7 @@
 typedef id (^BKTBlockStepOperationBlock)(id input, NSError **error);
 
 /**
- *  Class to create simple steps with just a block, avoiding subclassing of BkBasicStepOperation in some cases.
+ *  Class to create simple steps with just a block, avoiding subclassing of \ref BKTBasicStepOperation in some cases.
  */
 @interface BKTBlockStepOperation : BKTBasicStepOperation
 
@@ -42,7 +42,7 @@ typedef id (^BKTBlockStepOperationBlock)(id input, NSError **error);
 + (id) blockOperationWithInputKey:(NSString *)inKey outputKey:(NSString *)outKey block:(BKTBlockStepOperationBlock)workBlock;
 
 /**
- *  Class method to create a simple step with a block. Input and output keys values are BkTaskContentBodyObject.
+ *  Class method to create a simple step with a block. Input and output keys values are BKTTaskContentBodyObject.
  *
  *  @param queue     The operation queue on which the step should be executed.
  *  @param workBlock The block executed to process step input.
@@ -52,7 +52,7 @@ typedef id (^BKTBlockStepOperationBlock)(id input, NSError **error);
 + (id) blockOperationWithQueue:(NSOperationQueue *)queue block:(BKTBlockStepOperationBlock)workBlock;
 
 /**
- *  Class method to create a simple step with a block. Input and output keys values are BkTaskContentBodyObject.
+ *  Class method to create a simple step with a block. Input and output keys values are BKTTaskContentBodyObject.
  *
  *  @param workBlock The block executed to process step input.
  *
