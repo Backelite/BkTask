@@ -31,7 +31,9 @@
         <hr>
 
         <section id="main_content">
-          <h1>
+          <p><img src="https://github.com/Backelite/BkTask/raw/master/Images/parallel.png" alt="Parallel Flow" title="Parallel Flow"></p>
+
+<h1>
 <a name="bktask" class="anchor" href="#bktask"><span class="octicon octicon-link"></span></a>BkTask</h1>
 
 <p>BkTask is a library inspired by the <a href="http://en.wikipedia.org/wiki/Proactor_pattern" title="Proactor pattern on Wikipedia">Proactor</a> and <a href="http://en.wikipedia.org/wiki/Reactor_pattern" title="Reactor pattern on Wikipedia">Reactor</a> design patterns. It is designed with two concepts in mind, asynchronous and modular.<br>
@@ -45,7 +47,15 @@ This library is already used in AppStore applications used by millions of people
 <h2>
 <a name="changes" class="anchor" href="#changes"><span class="octicon octicon-link"></span></a>Changes</h2>
 
-<p>v 0.8  </p>
+<p>v 0.9</p>
+
+<ul>
+<li>Xcode 5 with iOS SDK 7.0 is now required (see <a href="#requirements">Requirements</a> for more info)</li>
+<li>Created a new step to download data using NSURLSession</li>
+<li>In a JSON parsing step, an empty JSON file is now considered as valid</li>
+<li>Removed warnings when compiling with Xcode 5</li>
+<li>Code cleaning</li>
+</ul><p>v 0.8  </p>
 
 <ul>
 <li>ARC Conversion</li>
@@ -55,7 +65,15 @@ This library is already used in AppStore applications used by millions of people
 <a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h2>
 
 <h3>
-<a name="xcode-configuration" class="anchor" href="#xcode-configuration"><span class="octicon octicon-link"></span></a>Xcode configuration</h3>
+<a name="the-pod-way" class="anchor" href="#the-pod-way"><span class="octicon octicon-link"></span></a>The Pod way</h3>
+
+<p>Just add the following line in your podfile</p>
+
+<pre><code>pod 'BkTask'
+</code></pre>
+
+<h3>
+<a name="the-old-school-way" class="anchor" href="#the-old-school-way"><span class="octicon octicon-link"></span></a>The old school way</h3>
 
 <p>The simplest way to use BkTask with your project is with Xcode 4 workspaces. Just drag and drop <code>BkTask.xcodeproj</code> below your other projects in the workspace.<br><img src="https://github.com/Backelite/BkTask/raw/master/Images/BkTask_1.jpg" alt="Drop BkTask xcodeproj into your workspace" title="Drop BkTask xcodeproj into your workspace"></p>
 
@@ -64,8 +82,6 @@ Select <code>libBkTask.a</code> and click <code>Add</code>.<br><img src="https:/
 
 <p>As it is a static library, you will need to indicate the path to BkTask headers. To do so, select your project's target and click on the <code>Build Settings</code> tab. Find the <code>Header Search Paths</code> and set the path to the <code>Classes</code> directory of BkTask.
 For instance, let's assume that you have a <code>Libraries</code> directory at the same level of your <code>.xcodeproj</code> where you store all your external libraries. In that case, the header to indicate would be <code>$(SRCROOT)/Librairies/BkTask/Classes</code>.<br><img src="https://github.com/Backelite/BkTask/raw/master/Images/BkTask_3.jpg" alt="Add BkTask headers to your Header Search Paths" title="Add BkTask headers to your Header Search Paths"></p>
-
-<p><strong>To make this step even easier, support for cocoapods is coming soon.</strong></p>
 
 <hr><h3>
 <a name="using-bktask" class="anchor" href="#using-bktask"><span class="octicon octicon-link"></span></a>Using BkTask</h3>
@@ -176,11 +192,11 @@ BkTask offers multiple ways for creating custom steps. If your step is quite sim
 Is is intented to run on iOS 6.0 an above. We recommend using Xcode 4.6.2 and above to build it.</p>
 
 <h2>
-<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+<a name="-requirements" class="anchor" href="#-requirements"><span class="octicon octicon-link"></span></a><a name="requirements"></a> Requirements</h2>
 
 <p>BkTask requires iOS 5.0 and above. If you need iOS 4.3 compatibility, you can exclude the <code>BKTJSONParsingOperation</code> class of the BkTask target and it should be okay. 
 However this tip is not guaranteed to stay true in future releases.<br>
-Xcode 4.6.2 is required to build the BkTask project.</p>
+Xcode 5.0 is required to build the BkTask project. The <code>BKTURLSessionLoadingOperation</code> cannot be used before iOS 7.0.</p>
 
 <h3>
 <a name="arc" class="anchor" href="#arc"><span class="octicon octicon-link"></span></a>ARC</h3>
