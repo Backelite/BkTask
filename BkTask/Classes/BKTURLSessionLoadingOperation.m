@@ -94,28 +94,24 @@
 
 - (void)start
 {
-    if (NO == [NSThread isMainThread]) {
-        [self performSelectorOnMainThread:_cmd withObject:nil waitUntilDone:YES];
-    } else {
-        @synchronized (self) {
-            [self markAsStarted];
-            if ([self isCancelled]) {
+    @synchronized (self) {
+        [self markAsStarted];
+        if ([self isCancelled]) {
+            [self finish];
+        } else {
+            [[self.session dataTaskWithRequest:self.request completionHandler:^(NSData *data, NSURLResponse *response, NSError *networkError) {
+                self.content.bodyData = data;
+                self.content.urlResponse = response;
+                if (networkError) {
+                    self.error = networkError;
+                } else {
+                    self.error = [self errorForResponse:(NSHTTPURLResponse *)response];
+                }
+                
+                [[UIApplication sharedApplication] disableNetworkActivityIndicator];
                 [self finish];
-            } else {
-                [[self.session dataTaskWithRequest:self.request completionHandler:^(NSData *data, NSURLResponse *response, NSError *networkError) {
-                    self.content.bodyData = data;
-                    self.content.urlResponse = response;
-                    if (networkError) {
-                        self.error = networkError;
-                    } else {
-                        self.error = [self errorForResponse:(NSHTTPURLResponse *)response];
-                    }
-                    
-                    [[UIApplication sharedApplication] disableNetworkActivityIndicator];
-                    [self finish];
-                }] resume];
-                [[UIApplication sharedApplication] enableNetworkActivityIndicator];
-            }
+            }] resume];
+            [[UIApplication sharedApplication] enableNetworkActivityIndicator];
         }
     }
 }
