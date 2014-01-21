@@ -153,3 +153,5 @@ If you use Xcode 4 workspaces with BkTask included as a project into your worksp
 
 ## Licence
 BkTask is available under the MIT license. See the LICENSE file for more info.
+
+[![Analytics](https://ga-beacon.appspot.com/UA-44164731-1/bktask/readme)](https://github.com/igrigorik/ga-beacon?pixel)
