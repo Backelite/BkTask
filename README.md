@@ -9,6 +9,11 @@ This library is already used in AppStore applications used by millions of people
 
 ## Changes
 
+v 0.9.1
+
+* Adapted demo project to iPhone 6 and 6 plus screens
+* Fixed a potential deadlock
+
 v 0.9
 
 * Xcode 5 with iOS SDK 7.0 is now required (see [Requirements](#requirements) for more info)
@@ -137,7 +142,7 @@ If you create a generic step and think it could be useful to other people, feel 
 
 ### Sample project
 The sample project is a little weather application. You can search for a city and see related forecasts. It demonstrates how to create a task that will download and parse JSON. It also shows how to add a simple custom step to a task using the block method. To see a sample of `BKTBasicStepOperation` subclassing, you can read the source of `BKTJSONParsingOperation`.  
-Is is intented to run on iOS 6.0 an above. We recommend using Xcode 4.6.2 and above to build it.
+Is is intented to run on iOS 6.1 an above. We recommend using Xcode 6.0 or above to build it.
 
 ## <a name="requirements"></a> Requirements
 BkTask requires iOS 5.0 and above. If you need iOS 4.3 compatibility, you can exclude the `BKTJSONParsingOperation` class of the BkTask target and it should be okay. 

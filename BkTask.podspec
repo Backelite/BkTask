@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "BkTask"
-  s.version      = "0.9"
+  s.version      = "0.9.1"
   s.summary      = "An asynchronous workflows library for iOS"
 
   s.description  = <<-DESC
@@ -27,8 +27,9 @@ Pod::Spec.new do |s|
   s.homepage     = "http://backelite.github.io/BkTask/"
   s.license      = { :type => 'MIT' }
   s.author       = "Backelite"
+  s.social_media_url = 'https://twitter.com/AgenceBackelite'
   s.platform     = :ios, '5.0'
-  s.source       = { :git => "https://github.com/Backelite/BkTask.git", :tag => "0.9" }
+  s.source       = { :git => "https://github.com/Backelite/BkTask.git", :tag => "0.9.1" }
 
   s.source_files  = 'BkTask/Classes', 'BkTask/Classes/**/*.{h,m}'
   s.exclude_files = 'Classes/Exclude'
