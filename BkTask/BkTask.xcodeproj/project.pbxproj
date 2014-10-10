@@ -410,7 +410,7 @@
 			name = BkTask_UnitTests;
 			productName = BkCommon_UnitTests;
 			productReference = 8A9E0D8D141E62F800A28373 /* BkTask_UnitTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		8A9E0D8E141E631000A28373 /* BkTask */ = {
 			isa = PBXNativeTarget;
@@ -781,6 +781,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/BkCore.dst;
@@ -802,6 +803,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/BkCore.dst;
 				GCC_MODEL_TUNING = G5;
@@ -809,6 +811,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				INSTALL_PATH = /usr/local/lib;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphonesimulator*]" = 5.1.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRIVATE_HEADERS_FOLDER_PATH = "$(PRODUCT_NAME)";
 				PRODUCT_NAME = BkTask;
